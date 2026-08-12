@@ -2,169 +2,165 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --paper:#FAF8F4; --surface:#FFFFFF; --surface-2:#F4F1EA;
-    --ink:#16191F; --muted:#5C6572; --faint:#8A929E;
-    --line:#E7E4DC; --line-strong:#D8D3C7;
-    --accent:#0E3A5C; --accent-soft:#e8eef3;
-    --gold:#9C7420; --gold-line:#E6D3A6; --gold-bg:#FBF4E2;
-    --up:#14804A; --up-bg:#E6F3EC; --down:#C0392B; --down-bg:#FBEBE9;
-    --shadow:0 1px 2px rgba(20,25,31,.05), 0 8px 24px rgba(20,25,31,.05);
-    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --paper:#FFFFFF; --surface:#FFFFFF; --surface-2:#F5F4F1;
+    --ink:#13110F; --muted:#57534E; --faint:#8B857E;
+    --line:#E5E2DD; --line-strong:#D5D1C9;
+    --accent:#C8102E; --accent-soft:#FBEAEC;
+    --up:#0E7C45; --up-bg:#E4F2EA; --down:#C0102E; --down-bg:#FBEAEC;
+    --shadow:0 1px 2px rgba(19,17,15,.05), 0 10px 26px rgba(19,17,15,.06);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
     --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Thai",Helvetica,Arial,sans-serif;
     --mono:ui-monospace,"SF Mono","Cascadia Mono","Roboto Mono",Menlo,Consolas,monospace;
   }
   @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-      --paper:#0E1116; --surface:#161A20; --surface-2:#1C222A;
-      --ink:#ECEEF1; --muted:#9AA2AD; --faint:#6D7681;
-      --line:#242A32; --line-strong:#333B45;
-      --accent:#5AA6DC; --accent-soft:#16242f;
-      --gold:#D6A94E; --gold-line:#4a3d1f; --gold-bg:#20190c;
-      --up:#34C77B; --up-bg:#0f2a1d; --down:#E5695B; --down-bg:#2b1512;
-      --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);}}
+    --paper:#121110; --surface:#1A1917; --surface-2:#242220;
+    --ink:#F4F1ED; --muted:#A9A29A; --faint:#736C64;
+    --line:#2C2A27; --line-strong:#3A3733;
+    --accent:#F0384C; --accent-soft:#2a1315;
+    --up:#37C77E; --up-bg:#0f2a1d; --down:#F0384C; --down-bg:#2a1315;
+    --shadow:0 1px 2px rgba(0,0,0,.35), 0 12px 30px rgba(0,0,0,.4);}}
   :root[data-theme="dark"]{
-      --paper:#0E1116; --surface:#161A20; --surface-2:#1C222A;
-      --ink:#ECEEF1; --muted:#9AA2AD; --faint:#6D7681;
-      --line:#242A32; --line-strong:#333B45;
-      --accent:#5AA6DC; --accent-soft:#16242f;
-      --gold:#D6A94E; --gold-line:#4a3d1f; --gold-bg:#20190c;
-      --up:#34C77B; --up-bg:#0f2a1d; --down:#E5695B; --down-bg:#2b1512;
-      --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);}
+    --paper:#121110; --surface:#1A1917; --surface-2:#242220;
+    --ink:#F4F1ED; --muted:#A9A29A; --faint:#736C64;
+    --line:#2C2A27; --line-strong:#3A3733;
+    --accent:#F0384C; --accent-soft:#2a1315;
+    --up:#37C77E; --up-bg:#0f2a1d; --down:#F0384C; --down-bg:#2a1315;
+    --shadow:0 1px 2px rgba(0,0,0,.35), 0 12px 30px rgba(0,0,0,.4);}
 
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.55; font-size:16px; -webkit-font-smoothing:antialiased}
   .wrap{max-width:1080px; margin:0 auto; padding:0 20px}
   .num{font-family:var(--mono); font-variant-numeric:tabular-nums; letter-spacing:-.01em}
-  h1,h2,h3{margin:0; text-wrap:balance; font-weight:600}
+  h1,h2,h3{margin:0; text-wrap:balance; font-weight:700}
   a{color:var(--accent)}
 
-  .topbar{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter:saturate(1.4) blur(10px); border-bottom:1px solid var(--line)}
-  .topbar .row{display:flex; align-items:center; gap:10px; padding:11px 0}
-  .brand{display:flex; align-items:baseline; gap:9px; font-family:var(--serif); font-size:19px; font-weight:600}
-  .brand .dot{width:8px; height:8px; border-radius:50%; background:var(--gold); align-self:center}
+  /* Forbes-style black masthead (always dark) */
+  .topbar{position:sticky; top:0; z-index:20; background:#0c0b0a; border-bottom:3px solid var(--accent)}
+  .topbar .row{display:flex; align-items:center; gap:10px; padding:12px 0}
+  .brand{display:flex; align-items:center; gap:10px; font-family:var(--serif); font-size:22px; font-weight:700; color:#fff; letter-spacing:-.01em}
+  .brand .mk{display:inline-block; width:16px; height:16px; background:var(--accent)}
   .spacer{flex:1}
-  .stamp{font-size:12px; color:var(--muted); display:flex; align-items:center; gap:7px; margin-right:4px}
-  .pulse{width:7px;height:7px;border-radius:50%;background:var(--up);animation:pulse 2.4s infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--up) 55%,transparent)}70%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 0 0 transparent}}
+  .stamp{font-size:12px; color:#b8b2ab; display:flex; align-items:center; gap:7px; margin-right:4px}
+  .pulse{width:7px;height:7px;border-radius:50%;background:#37C77E;animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(55,199,126,.5)}70%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 0 0 transparent}}
   @media (prefers-reduced-motion:reduce){.pulse{animation:none}}
-  .tbtn{border:1px solid var(--line-strong); background:var(--surface); color:var(--muted); border-radius:8px; padding:6px 10px; font-size:12.5px; cursor:pointer; font-family:var(--sans); white-space:nowrap}
-  .tbtn:hover{color:var(--ink)}
-  .tbtn.lang{color:var(--accent); font-weight:600; border-color:var(--accent)}
+  .tbtn{border:1px solid #3a3733; background:transparent; color:#e8e4de; border-radius:7px; padding:6px 10px; font-size:12.5px; cursor:pointer; font-family:var(--sans); white-space:nowrap}
+  .tbtn:hover{border-color:#666}
+  .tbtn.lang{color:#fff; font-weight:700; border-color:var(--accent)}
   @media(max-width:560px){.stamp{display:none}}
 
-  /* hero */
-  .hero{position:relative; margin-top:22px; border-radius:16px; overflow:hidden; border:1px solid var(--line); background:linear-gradient(120deg,var(--accent-soft),var(--surface))}
-  .hero svg{display:block; width:100%; height:120px}
-  .masthead{padding:26px 0 8px}
-  .eyebrow{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); font-weight:600}
-  .masthead h1{font-family:var(--serif); font-size:clamp(28px,5vw,44px); line-height:1.06; margin:10px 0 6px; letter-spacing:-.01em}
-  .masthead .sub{color:var(--muted); font-size:15px; max-width:64ch}
-  .datebar{display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:16px; padding-top:16px; border-top:1px solid var(--line); font-size:13px; color:var(--muted)}
-  .datebar b{color:var(--ink); font-weight:600}
+  /* Breaking-news cover (always dark, magazine style) */
+  .cover{position:relative; margin-top:22px; border-radius:4px; overflow:hidden; background:#141210; color:#fff; min-height:280px; display:flex; align-items:flex-end; border:1px solid #241f1c}
+  .coverbg{position:absolute; inset:0; opacity:.55}
+  .coverbg svg{width:100%; height:100%}
+  .cover::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(20,18,16,.15) 0%,rgba(20,18,16,.55) 55%,rgba(20,18,16,.92) 100%)}
+  .coverinner{position:relative; z-index:2; padding:26px 26px 24px; width:100%}
+  .coverkicker{display:inline-flex; align-items:center; gap:8px; background:var(--accent); color:#fff; font-size:11.5px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; padding:5px 10px; border-radius:2px}
+  .covertitle{font-family:var(--serif); font-size:clamp(26px,4.6vw,44px); line-height:1.04; margin:14px 0 8px; color:#fff; letter-spacing:-.015em}
+  .coverdeck{margin:0; font-size:15.5px; color:#e2ddd6; max-width:60ch; line-height:1.5}
+  .covermeta{margin-top:14px; font-size:11.5px; color:#a49d95; letter-spacing:.04em; text-transform:uppercase}
+  .covernote{position:absolute; top:12px; right:14px; z-index:2; font-size:10px; color:#8a837b; letter-spacing:.04em}
 
-  section{margin:36px 0}
-  .sechead{display:flex; align-items:baseline; gap:12px; margin-bottom:16px; flex-wrap:wrap}
-  .sechead h2{font-family:var(--serif); font-size:23px}
-  .sechead .hint{font-size:12.5px; color:var(--faint); margin-left:auto}
+  .stripbar{display:flex; flex-wrap:wrap; gap:6px 18px; margin:14px 0 0; padding:12px 2px; border-bottom:1px solid var(--line); font-size:13px; color:var(--muted)}
+  .stripbar b{color:var(--ink); font-weight:700}
+  .eyebrow{font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:800}
+
+  section{margin:34px 0}
+  .sechead{display:flex; align-items:baseline; gap:12px; margin-bottom:16px; flex-wrap:wrap; border-bottom:2px solid var(--ink); padding-bottom:8px}
+  .sechead h2{font-family:var(--serif); font-size:24px; letter-spacing:-.01em}
+  .sechead .hint{font-size:12px; color:var(--faint); margin-left:auto; font-weight:400}
   .rule{height:1px; background:var(--line); margin:16px 0}
 
-  .lead{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px 22px; box-shadow:var(--shadow); margin-bottom:18px}
-  .lead .tag{font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700}
-  .lead p{margin:8px 0 0; font-size:17px; line-height:1.6}
+  .lead{background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:4px; padding:20px 22px; box-shadow:var(--shadow); margin-bottom:18px}
+  .lead .tag{font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:800}
+  .lead p{margin:8px 0 0; font-size:17px; line-height:1.62}
   .lead b{font-weight:700}
 
   .grid{display:grid; gap:14px}
   .g2{grid-template-columns:repeat(2,1fr)}
-  .g3{grid-template-columns:repeat(3,1fr)}
   .g4{grid-template-columns:repeat(4,1fr)}
-  @media(max-width:840px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:560px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  @media(max-width:840px){.g4{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.g2,.g4{grid-template-columns:1fr}}
 
-  .card{background:var(--surface); border:1px solid var(--line); border-radius:13px; padding:16px 17px; box-shadow:var(--shadow)}
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:4px; padding:16px 17px; box-shadow:var(--shadow)}
   .card h3{font-size:14px; display:flex; align-items:center; gap:8px; margin-bottom:8px}
   .flag{font-size:16px}
   .card p{margin:0; font-size:14px; color:var(--muted); line-height:1.55}
   .card p b{color:var(--ink); font-weight:700}
   .why{margin-top:10px; padding-top:10px; border-top:1px dashed var(--line-strong); font-size:12.5px; color:var(--muted)}
-  .why span{color:var(--gold); font-weight:700; text-transform:uppercase; letter-spacing:.06em; font-size:10.5px}
+  .why span{color:var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:.06em; font-size:10.5px}
 
   .ccard .chdr{display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:6px}
   .ccard .ci{display:flex; flex-direction:column}
   .ccard .ci .ix{font-size:11.5px; color:var(--faint)}
-  .ccard .val{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:17px; font-weight:600; text-align:right}
+  .ccard .val{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:17px; font-weight:700; text-align:right}
   .chartbox{position:relative; width:100%; height:96px; margin:4px 0 2px; touch-action:pan-y}
   .chartbox svg{display:block}
   .chartcap{font-size:10.5px; color:var(--faint); margin-bottom:8px}
-  .ctip{position:absolute; top:0; transform:translateX(-50%); background:var(--ink); color:var(--paper); font-family:var(--mono); font-size:11px; padding:2px 7px; border-radius:5px; pointer-events:none; opacity:0; white-space:nowrap; transition:opacity .1s; z-index:3}
+  .ctip{position:absolute; top:0; transform:translateX(-50%); background:var(--ink); color:var(--paper); font-family:var(--mono); font-size:11px; padding:2px 7px; border-radius:3px; pointer-events:none; opacity:0; white-space:nowrap; transition:opacity .1s; z-index:3}
   .cvline{position:absolute; top:0; bottom:0; width:1px; background:var(--line-strong); pointer-events:none; opacity:0}
-  .expand{margin-top:12px; width:100%; text-align:left; background:var(--surface-2); border:1px solid var(--line); color:var(--accent); font-family:var(--sans); font-size:12.5px; font-weight:600; padding:9px 12px; border-radius:9px; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:8px}
+  .expand{margin-top:12px; width:100%; text-align:left; background:var(--surface-2); border:1px solid var(--line); color:var(--accent); font-family:var(--sans); font-size:12.5px; font-weight:700; padding:9px 12px; border-radius:3px; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:8px}
   .expand:hover{border-color:var(--accent)}
   .full{margin-top:10px; font-size:13.5px; color:var(--muted); line-height:1.6; border-top:1px solid var(--line); padding-top:12px}
   .full .srcline{margin-top:11px; display:flex; flex-wrap:wrap; gap:8px; align-items:center}
-  .srcpill{font-size:11.5px; border:1px solid var(--accent); color:var(--accent); border-radius:999px; padding:3px 10px; text-decoration:none; font-weight:600}
+  .srcpill{font-size:11.5px; border:1px solid var(--accent); color:var(--accent); border-radius:2px; padding:3px 10px; text-decoration:none; font-weight:700}
   .srcpill:hover{background:var(--accent-soft)}
-  .srclabel{font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--faint); font-weight:700}
+  .srclabel{font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--faint); font-weight:800}
 
-  .themecard{border-left:3px solid var(--accent)}
-  .themecard.warn{border-left-color:var(--down)}
-  .themecard.rate{border-left-color:var(--gold)}
+  .themecard{border-top:3px solid var(--accent)}
 
-  .watch{background:var(--surface); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); overflow:hidden}
+  .watch{background:var(--surface); border:1px solid var(--line); border-radius:4px; box-shadow:var(--shadow); overflow:hidden}
   .wrow{display:grid; grid-template-columns:82px 1fr auto; gap:14px; align-items:center; padding:15px 18px; border-bottom:1px solid var(--line)}
   .wrow:last-child{border-bottom:0}
   .wrow .wd{display:flex; flex-direction:column; gap:2px}
   .wrow .wd b{font-family:var(--mono); font-size:13px} .wrow .wd small{font-size:10.5px; color:var(--faint); text-transform:uppercase; letter-spacing:.05em}
   .wrow .wt b{font-size:14px} .wrow .wt p{margin:2px 0 0; font-size:12.5px; color:var(--muted)}
-  .imp{font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; padding:3px 9px; border-radius:999px; white-space:nowrap}
-  .imp.h{color:var(--down); background:var(--down-bg)} .imp.m{color:var(--gold); background:var(--gold-bg)} .imp.l{color:var(--muted); background:var(--surface-2)}
+  .imp{font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:.05em; padding:3px 9px; border-radius:2px; white-space:nowrap}
+  .imp.h{color:#fff; background:var(--accent)} .imp.m{color:var(--accent); background:var(--accent-soft); border:1px solid var(--accent)} .imp.l{color:var(--muted); background:var(--surface-2)}
   @media(max-width:560px){.wrow{grid-template-columns:64px 1fr}.wrow .imp{grid-column:2; justify-self:start; margin-top:4px}}
 
-  .idx{display:flex; flex-direction:column; gap:5px; padding:14px 15px}
-  .idx .nm{font-size:12.5px; color:var(--muted); display:flex; justify-content:space-between; gap:8px}
-  .idx .nm .rg{color:var(--faint); font-size:11px}
-  .idx .val{font-size:20px; font-weight:600}
-  .chg{display:inline-flex; align-items:center; gap:5px; font-size:12.5px; font-weight:600; padding:2px 8px; border-radius:999px; width:max-content}
+  .chg{display:inline-flex; align-items:center; gap:5px; font-size:12.5px; font-weight:700; padding:2px 8px; border-radius:2px; width:max-content}
   .chg.u{color:var(--up); background:var(--up-bg)} .chg.d{color:var(--down); background:var(--down-bg)} .chg.f{color:var(--muted); background:var(--surface-2)}
 
-  .prices{background:var(--surface); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); overflow:hidden}
-  .pgroup-h{display:flex; align-items:center; gap:10px; padding:12px 18px; background:var(--surface-2); border-bottom:1px solid var(--line); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:700}
+  .prices{background:var(--surface); border:1px solid var(--line); border-radius:4px; box-shadow:var(--shadow); overflow:hidden}
+  .pgroup-h{display:flex; align-items:center; gap:10px; padding:11px 18px; background:var(--ink); color:var(--paper); font-size:12px; letter-spacing:.09em; text-transform:uppercase; font-weight:800}
   .prow{display:grid; grid-template-columns:1.7fr 96px 1fr 1.1fr; align-items:center; gap:12px; padding:13px 18px; border-bottom:1px solid var(--line)}
   .prow:last-child{border-bottom:0}
   .prow .tk{display:flex; flex-direction:column}
   .prow .tk b{font-size:14.5px} .prow .tk small{color:var(--faint); font-size:12px}
-  .prow .px{text-align:right; font-size:15px; font-weight:600}
+  .prow .px{text-align:right; font-size:15px; font-weight:700}
   .prow .spark{display:flex; justify-content:center}
   .prow .meta{text-align:right; font-size:11.5px; color:var(--faint)}
   @media(max-width:620px){.prow{grid-template-columns:1.4fr 70px 1fr}.prow .meta{display:none}}
 
-  .spotlight{background:var(--gold-bg); border:1.5px solid var(--gold-line); border-radius:16px; padding:22px; box-shadow:var(--shadow)}
-  .badge{background:var(--gold); color:#fff; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:3px 9px; border-radius:6px}
-  :root[data-theme="dark"] .badge, :root:not([data-theme="light"]) .badge{color:#1a1406}
+  .spotlight{background:var(--surface-2); border:1px solid var(--line); border-top:4px solid var(--accent); border-radius:4px; padding:22px; box-shadow:var(--shadow)}
+  .badge{background:var(--accent); color:#fff; font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; padding:3px 9px; border-radius:2px}
   .subhead{font-family:var(--serif); font-size:18px; margin:6px 0 12px; display:flex; align-items:center; gap:9px; flex-wrap:wrap}
   .subhead small{font-family:var(--sans); font-size:11.5px; font-weight:400; color:var(--muted)}
-  .fund{background:var(--surface); border:1px solid var(--gold-line); border-radius:12px; padding:15px 16px; display:flex; flex-direction:column; gap:8px}
+  .fund{background:var(--surface); border:1px solid var(--line); border-radius:4px; padding:15px 16px; display:flex; flex-direction:column; gap:8px}
   .fund .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px}
-  .fund .code{font-weight:700; font-size:15px} .fund .code small{display:block; color:var(--muted); font-weight:400; font-size:12px; margin-top:2px}
-  .fund .rk{font-size:10.5px; color:var(--gold); font-weight:700; border:1px solid var(--gold-line); border-radius:6px; padding:2px 7px; white-space:nowrap; text-align:center}
+  .fund .code{font-weight:800; font-size:15px} .fund .code small{display:block; color:var(--muted); font-weight:400; font-size:12px; margin-top:2px}
+  .fund .rk{font-size:10.5px; color:var(--accent); font-weight:800; border:1px solid var(--accent); border-radius:2px; padding:2px 7px; white-space:nowrap; text-align:center}
   .fund p{margin:0; font-size:12.8px; color:var(--muted); line-height:1.5}
   .fund .hold{display:flex; flex-wrap:wrap; gap:6px}
-  .chip{font-size:11px; background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:2px 9px; color:var(--muted)}
+  .chip{font-size:11px; background:var(--surface-2); border:1px solid var(--line); border-radius:2px; padding:2px 9px; color:var(--muted)}
 
   .talk{display:grid; gap:12px; grid-template-columns:repeat(3,1fr)}
   @media(max-width:760px){.talk{grid-template-columns:1fr}}
-  .talk .card{border-top:3px solid var(--gold)}
+  .talk .card{border-top:3px solid var(--ink)}
   .talk ol{margin:8px 0 0; padding-left:18px; font-size:13px; color:var(--muted)} .talk li{margin:6px 0}
 
-  footer{border-top:1px solid var(--line); margin-top:44px; padding:26px 0 60px; font-size:12.5px; color:var(--faint)}
-  footer h4{font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:0 0 8px}
+  footer{border-top:3px solid var(--ink); margin-top:44px; padding:26px 0 60px; font-size:12.5px; color:var(--faint)}
+  footer h4{font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:0 0 8px; font-weight:800}
   .srcs{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px}
-  .src{border:1px solid var(--line); border-radius:999px; padding:3px 11px; color:var(--muted); font-size:12px}
-  .disc{background:var(--surface-2); border:1px solid var(--line); border-radius:10px; padding:13px 15px; line-height:1.6}
+  .src{border:1px solid var(--line); border-radius:2px; padding:3px 11px; color:var(--muted); font-size:12px}
+  .disc{background:var(--surface-2); border:1px solid var(--line); border-radius:4px; padding:13px 15px; line-height:1.6}
 </style>
 
 <div class="topbar">
   <div class="wrap row">
-    <div class="brand"><span class="dot"></span>The Morning Desk</div>
+    <div class="brand"><span class="mk"></span>The Morning Desk</div>
     <div class="spacer"></div>
     <div class="stamp"><span class="pulse"></span><span id="stamp"></span></div>
     <button class="tbtn lang" id="lang">ไทย</button>
@@ -173,32 +169,36 @@
 </div>
 
 <div class="wrap">
-  <div class="hero" aria-hidden="true">
-    <svg viewBox="0 0 1080 120" preserveAspectRatio="none">
-      <g opacity="0.5">
-        <rect x="70" y="70" width="10" height="50" fill="var(--accent)" opacity=".25"/>
-        <rect x="120" y="55" width="10" height="65" fill="var(--accent)" opacity=".3"/>
-        <rect x="170" y="78" width="10" height="42" fill="var(--accent)" opacity=".25"/>
-        <rect x="900" y="60" width="10" height="60" fill="var(--gold)" opacity=".3"/>
-        <rect x="950" y="46" width="10" height="74" fill="var(--gold)" opacity=".35"/>
-        <rect x="1000" y="66" width="10" height="54" fill="var(--gold)" opacity=".3"/>
-      </g>
-      <path d="M0 86 L120 74 L240 82 L360 60 L480 68 L600 44 L720 54 L840 34 L960 46 L1080 26"
-            fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="1080" cy="26" r="4" fill="var(--gold)"/>
-    </svg>
-  </div>
-
-  <header class="masthead">
-    <div class="eyebrow" id="eyebrow"></div>
-    <h1 id="h1"></h1>
-    <p class="sub" id="sub"></p>
-    <div class="datebar">
-      <span id="db-ed"></span>
-      <span id="db-cov"></span>
-      <span id="db-next"></span>
+  <section class="cover">
+    <div class="coverbg" aria-hidden="true">
+      <svg viewBox="0 0 1080 300" preserveAspectRatio="xMidYMid slice">
+        <g>
+          <rect x="60" y="150" width="18" height="120" fill="#5b5750"/><rect x="66" y="120" width="6" height="30" fill="#5b5750"/>
+          <rect x="110" y="110" width="18" height="160" fill="#6d6860"/><rect x="116" y="90" width="6" height="20" fill="#6d6860"/>
+          <rect x="160" y="175" width="18" height="95" fill="#4f4b45"/>
+          <rect x="210" y="130" width="18" height="140" fill="#6d6860"/>
+          <rect x="820" y="160" width="18" height="110" fill="#7a2530"/>
+          <rect x="870" y="120" width="18" height="150" fill="#9c2030"/><rect x="876" y="96" width="6" height="24" fill="#9c2030"/>
+          <rect x="920" y="185" width="18" height="85" fill="#7a2530"/>
+          <rect x="970" y="140" width="18" height="130" fill="#9c2030"/>
+          <rect x="1020" y="170" width="18" height="100" fill="#7a2530"/>
+        </g>
+        <path d="M0 220 L120 190 L240 205 L360 160 L480 175 L600 120 L720 145 L840 95 L960 120 L1080 70"
+              fill="none" stroke="#C8102E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+      </svg>
     </div>
-  </header>
+    <span class="covernote" id="hero-note"></span>
+    <div class="coverinner">
+      <span class="coverkicker" id="hero-kicker"></span>
+      <h1 class="covertitle" id="hero-title"></h1>
+      <p class="coverdeck" id="hero-deck"></p>
+      <div class="covermeta" id="hero-meta"></div>
+    </div>
+  </section>
+
+  <div class="stripbar">
+    <span id="db-ed"></span><span id="db-cov"></span><span id="db-next"></span>
+  </div>
 
   <section id="brief">
     <div class="sechead"><h2 id="s-brief"></h2><span class="hint" id="h-brief"></span></div>
@@ -224,10 +224,10 @@
 
   <section id="spotlight">
     <div class="spotlight">
-      <div class="sechead"><span class="badge" id="b-sell"></span><h2 style="margin-left:4px" id="s-funds"></h2><span class="hint">UOB Asset Management</span></div>
+      <div class="sechead" style="border-bottom-color:var(--accent)"><span class="badge" id="b-sell"></span><h2 style="margin-left:4px" id="s-funds"></h2><span class="hint">UOB Asset Management</span></div>
       <h3 class="subhead" id="sh-off"></h3>
       <div class="grid g2" style="margin-bottom:18px" id="offgrid"></div>
-      <div class="rule" style="background:var(--gold-line)"></div>
+      <div class="rule"></div>
       <h3 class="subhead" id="sh-on"></h3>
       <div class="grid g2" id="ongrid"></div>
     </div>
@@ -236,11 +236,6 @@
   <section id="talk">
     <div class="sechead"><h2 id="s-talk"></h2></div>
     <div class="talk" id="talkgrid"></div>
-  </section>
-
-  <section id="markets">
-    <div class="sechead"><h2 id="s-markets"></h2><span class="hint" id="h-markets"></span></div>
-    <div class="grid g4" id="idxgrid"></div>
   </section>
 
   <footer>
@@ -258,15 +253,14 @@
   let L='en';
   const $=id=>document.getElementById(id);
 
-  // ================= STATIC STRINGS =================
   const S={
     stamp:{en:"Auto-updates hourly · market hours · Bangkok", th:"อัปเดตอัตโนมัติทุกชั่วโมง · ช่วงตลาดเปิด · กรุงเทพฯ"},
     themelbl:{en:"Theme", th:"ธีม"},
-    eyebrow:{en:"Private market brief · Prepared for a relationship manager", th:"สรุปตลาดส่วนตัว · จัดทำเพื่อผู้จัดการความสัมพันธ์ลูกค้า"},
-    h1:{en:"What moved the markets — and what to tell your clients", th:"อะไรทำให้ตลาดขยับ — และคุณควรบอกอะไรกับลูกค้า"},
-    sub:{en:"Yesterday's global market action, translated out of the jargon. Focus on what changes the case for bonds, funds and insurance. Refreshed automatically every hour during market hours.", th:"สรุปความเคลื่อนไหวตลาดโลกเมื่อวาน แบบเข้าใจง่ายไม่มีศัพท์ยาก เน้นสิ่งที่มีผลต่อการขายตราสารหนี้ กองทุน และประกัน อัปเดตอัตโนมัติทุกชั่วโมงในช่วงตลาดเปิด"},
-    dbEd:{en:"Edition", th:"ฉบับวันที่"}, dbCov:{en:"Covering the session of", th:"สรุปการซื้อขายวันที่"},
-    dbCovVal:{en:"Tue 11 Aug 2026", th:"อังคาร 11 ส.ค. 2026"},
+    heroKicker:{en:"Breaking · Markets", th:"ข่าวด่วน · ตลาด"},
+    heroTitle:{en:"Tech Sell-Off and $80 Oil Rattle Global Markets", th:"แรงขายหุ้นเทคและน้ำมัน $80 เขย่าตลาดโลก"},
+    heroDeck:{en:"Wall Street falls a second day as chipmakers slide and Middle-East tensions lift crude — all eyes now on this week's US inflation report.", th:"หุ้นสหรัฐลบวันที่สองติดต่อกัน หุ้นชิปร่วงและความตึงเครียดตะวันออกกลางดันราคาน้ำมัน ทุกสายตาจับจ้องตัวเลขเงินเฟ้อสหรัฐสัปดาห์นี้"},
+    heroNote:{en:"Illustrated cover · full photos at the linked sources", th:"ภาพหน้าปกจำลอง · ภาพข่าวจริงที่ลิงก์แหล่งข่าว"},
+    dbEd:{en:"Edition", th:"ฉบับวันที่"}, dbCov:{en:"Covering", th:"ครอบคลุมการซื้อขาย"}, dbCovVal:{en:"Tue 11 Aug 2026", th:"อังคาร 11 ส.ค. 2026"},
     dbNext:{en:"Next update", th:"อัปเดตถัดไป"}, dbNextVal:{en:"top of the hour", th:"ต้นชั่วโมงถัดไป"},
     sBrief:{en:"The one-minute read", th:"สรุปตลาดใน 1 นาที"},
     hBrief:{en:"Bold = what matters · tap a country for the full CNBC / Bloomberg summary", th:"ตัวหนา = จุดสำคัญ · แตะที่ประเทศเพื่อดูสรุปเต็มจาก CNBC / Bloomberg"},
@@ -280,168 +274,118 @@
       th:`สัปดาห์นี้ทั้งหมดอยู่ที่ <b style="color:var(--muted)">เงินเฟ้อและเฟด</b> ตัวเลขเหล่านี้ส่งผลโดยตรงต่อการตัดสินใจดอกเบี้ยเดือนกันยายน ซึ่งเป็นปัจจัยใหญ่ที่สุดต่ออัตราผลตอบแทนพันธบัตรตอนนี้`},
     sPrices:{en:"Prices & charts", th:"ราคาและกราฟ"},
     hPrices:{en:"Snapshot at last update · not live tick-by-tick", th:"ราคา ณ รอบอัปเดตล่าสุด · ไม่ใช่ราคาเรียลไทม์รายวินาที"},
-    pricenote:{en:"Charts show the recent-session trend. A single marker means only the latest close was available; the trend line fills in as the brief updates.", th:"กราฟแสดงแนวโน้มช่วงล่าสุด หากมีจุดเดียวแปลว่ามีเพียงราคาปิดล่าสุด เส้นแนวโน้มจะเติมขึ้นเมื่ออัปเดตรอบถัดไป"},
+    pricenote:{en:"A trend line is drawn where two or more real closing prices are available; a single dot means only the latest close was found for that update.", th:"เส้นกราฟจะวาดเมื่อมีราคาปิดจริงตั้งแต่ 2 จุดขึ้นไป จุดเดียวหมายถึงพบเพียงราคาปิดล่าสุดในรอบนั้น"},
     bSell:{en:"Your sell list", th:"รายการขายของคุณ"},
     sFunds:{en:"UOB funds — offshore & onshore", th:"กองทุน UOB — ต่างประเทศและในประเทศ"},
-    shOff:{en:'Offshore funds', th:'กองทุนต่างประเทศ (Offshore)'},
-    shOffSub:{en:"registered abroad · for clients with a USD/EUR foreign-investment account", th:"จดทะเบียนต่างประเทศ · สำหรับลูกค้าที่มีบัญชีลงทุนต่างประเทศ USD/EUR"},
-    shOn:{en:'Onshore funds', th:'กองทุนในประเทศ (Onshore)'},
-    shOnSub:{en:"buy in Thai baht (THB) · invest globally · easiest for most clients", th:"ซื้อเป็นเงินบาท · ลงทุนทั่วโลก · ง่ายที่สุดสำหรับลูกค้าส่วนใหญ่"},
+    shOff:{en:'Offshore funds', th:'กองทุนต่างประเทศ (Offshore)'}, shOffSub:{en:"registered abroad · for clients with a USD/EUR foreign-investment account", th:"จดทะเบียนต่างประเทศ · สำหรับลูกค้าที่มีบัญชีลงทุนต่างประเทศ USD/EUR"},
+    shOn:{en:'Onshore funds', th:'กองทุนในประเทศ (Onshore)'}, shOnSub:{en:"buy in Thai baht (THB) · invest globally · easiest for most clients", th:"ซื้อเป็นเงินบาท · ลงทุนทั่วโลก · ง่ายที่สุดสำหรับลูกค้าส่วนใหญ่"},
     sTalk:{en:"How to use this with clients today", th:"วิธีใช้ข้อมูลนี้กับลูกค้าวันนี้"},
-    sMarkets:{en:"Markets at a glance", th:"ภาพรวมตลาด"},
-    hMarkets:{en:"Last close · as of 11–12 Aug 2026", th:"ราคาปิดล่าสุด · ณ 11–12 ส.ค. 2026"},
     fSrc:{en:"Where this comes from", th:"แหล่งข้อมูล"},
     readfull:{en:"Read the full CNBC / Bloomberg summary", th:"อ่านสรุปเต็มจาก CNBC / Bloomberg"},
-    sources:{en:"Sources", th:"แหล่งข่าว"},
-    foryou:{en:"For you", th:"สำหรับคุณ"},
-    impact:{en:"Impact", th:"ผลกระทบ"},
+    sources:{en:"Sources", th:"แหล่งข่าว"}, foryou:{en:"For you", th:"สำหรับคุณ"}, impact:{en:"Impact", th:"ผลกระทบ"},
     recent:{en:"Recent sessions · hover or tap to read values", th:"ช่วงล่าสุด · ชี้หรือแตะเพื่อดูค่า"},
-    disc:{en:`<b>Please read.</b> This is a personal, private morning summary to help you stay on top of the market — <b>not investment advice, a research report, or a solicitation</b>, and not an official document of UOB, UOBAM, Prudential or any issuer. Prices are last-available snapshots (as of 11–12 Aug 2026), may be delayed, and are <b>not live quotes</b>. News photos stay at the linked source (copyright). Fund names are for awareness only — always check the official factsheet, current NAV, risk level and prospectus before any client conversation. Verify every number against your firm's approved systems.`,
-      th:`<b>โปรดอ่าน</b> นี่คือสรุปตลาดส่วนตัวเพื่อช่วยให้คุณตามตลาดได้ทัน — <b>ไม่ใช่คำแนะนำการลงทุน บทวิเคราะห์ หรือการชักชวนลงทุน</b> และไม่ใช่เอกสารทางการของ UOB, UOBAM, Prudential หรือผู้ออกใด ๆ ราคาที่แสดงเป็นข้อมูลล่าสุดที่มี (ณ 11–12 ส.ค. 2026) อาจมีความล่าช้า และ <b>ไม่ใช่ราคาเรียลไทม์</b> ภาพข่าวอยู่ที่ลิงก์แหล่งข่าวต้นทาง (ลิขสิทธิ์) ชื่อกองทุนมีไว้เพื่อรับรู้ข้อมูลเท่านั้น — โปรดตรวจสอบหนังสือชี้ชวน NAV ปัจจุบัน และระดับความเสี่ยงจากเอกสารทางการก่อนคุยกับลูกค้าทุกครั้ง และตรวจสอบทุกตัวเลขกับระบบที่บริษัทรับรอง`},
+    disc:{en:`<b>Please read.</b> This is a personal, private morning summary to help you stay on top of the market — <b>not investment advice, a research report, or a solicitation</b>, and not an official document of UOB, UOBAM, Prudential or any issuer. Prices are last-available snapshots (as of 10–11 Aug 2026), may be delayed, and are <b>not live quotes</b>. The cover is an illustration, not a photo; news photos stay at the linked source (copyright). Fund names are for awareness only — always check the official factsheet, current NAV, risk level and prospectus before any client conversation. Verify every number against your firm's approved systems.`,
+      th:`<b>โปรดอ่าน</b> นี่คือสรุปตลาดส่วนตัวเพื่อช่วยให้คุณตามตลาดได้ทัน — <b>ไม่ใช่คำแนะนำการลงทุน บทวิเคราะห์ หรือการชักชวนลงทุน</b> และไม่ใช่เอกสารทางการของ UOB, UOBAM, Prudential หรือผู้ออกใด ๆ ราคาที่แสดงเป็นข้อมูลล่าสุดที่มี (ณ 10–11 ส.ค. 2026) อาจล่าช้า และ <b>ไม่ใช่ราคาเรียลไทม์</b> ภาพหน้าปกเป็นภาพจำลองไม่ใช่ภาพถ่ายจริง ภาพข่าวอยู่ที่ลิงก์แหล่งข่าวต้นทาง (ลิขสิทธิ์) ชื่อกองทุนมีไว้เพื่อรับรู้ข้อมูลเท่านั้น — โปรดตรวจสอบหนังสือชี้ชวน NAV และระดับความเสี่ยงจากเอกสารทางการก่อนคุยกับลูกค้าทุกครั้ง และตรวจสอบทุกตัวเลขกับระบบที่บริษัทรับรอง`},
     foot:{en:"The Morning Desk · private edition · auto-updates hourly during market hours (Asia/Bangkok).", th:"The Morning Desk · ฉบับส่วนตัว · อัปเดตอัตโนมัติทุกชั่วโมงในช่วงตลาดเปิด (เวลากรุงเทพฯ)"},
   };
   const t=o=>o&&o[L]!==undefined?o[L]:o;
 
-  // ================= DATA =================
   const COUNTRIES=[
     {flag:"🇺🇸", name:{en:"United States",th:"สหรัฐอเมริกา"}, ix:"S&P 500", val:"7,728.20", chg:-0.32, series:[7802,7757.64,7770,7745,7728.20],
-      txt:{en:`<b>S&P 500 −0.3%, Nasdaq −0.6%.</b> A second straight down day. Chips fell (Intel led lower) and oil-price pressure weighed. Markets are frozen before this week's CPI print.`,
-           th:`<b>S&P 500 ลง 0.3%, Nasdaq ลง 0.6%</b> ลบเป็นวันที่สองติดต่อกัน หุ้นชิปร่วง (Intel นำลง) และราคาน้ำมันกดดัน ตลาดนิ่งรอตัวเลขเงินเฟ้อ CPI สัปดาห์นี้`},
-      why:{en:`Rate-cut hopes are fading — that keeps bond yields attractive. Good moment for locking in income.`,
-           th:`ความหวังลดดอกเบี้ยจางลง — ทำให้ผลตอบแทนพันธบัตรยังน่าสนใจ จังหวะดีในการล็อกรายได้`},
-      full:{en:`Wall Street closed lower for a second straight session. The S&P 500 slipped 0.32% to 7,728.20, the Nasdaq Composite fell 0.6% to 26,445.45, and the Dow lost 184 points (−0.34%) to 53,791.85. A tech and semiconductor sell-off — with Intel leading chipmakers lower — combined with rising oil prices and lingering uncertainty over US–Iran tensions to pressure risk appetite. Sneaker maker On Holding suffered its worst day on record after a weak forecast. Investors are largely on the sidelines ahead of Wednesday's July CPI inflation report, which will shape the Fed's September decision.`,
-            th:`ตลาดหุ้นสหรัฐปิดลบเป็นวันที่สองติดต่อกัน ดัชนี S&P 500 ลง 0.32% ปิดที่ 7,728.20, Nasdaq ลง 0.6% ที่ 26,445.45 และ Dow ลง 184 จุด (−0.34%) ที่ 53,791.85 แรงขายหุ้นกลุ่มเทคและเซมิคอนดักเตอร์ — โดยมี Intel นำกลุ่มชิปลง — รวมกับราคาน้ำมันที่สูงขึ้นและความไม่แน่นอนเรื่องความตึงเครียดสหรัฐ–อิหร่าน กดดันความเชื่อมั่น หุ้น On Holding ร่วงหนักสุดเป็นประวัติการณ์หลังคาดการณ์ผลประกอบการอ่อนแอ นักลงทุนส่วนใหญ่รอดูตัวเลขเงินเฟ้อ CPI เดือน ก.ค. ที่จะประกาศกลางสัปดาห์ ซึ่งจะกำหนดทิศทางการตัดสินใจของเฟดในเดือนกันยายน`},
+      txt:{en:`<b>S&P 500 −0.3%, Nasdaq −0.6%.</b> A second straight down day. Chips fell (Intel led lower) and oil-price pressure weighed. Markets are frozen before this week's CPI print.`, th:`<b>S&P 500 ลง 0.3%, Nasdaq ลง 0.6%</b> ลบเป็นวันที่สองติดต่อกัน หุ้นชิปร่วง (Intel นำลง) และราคาน้ำมันกดดัน ตลาดนิ่งรอตัวเลขเงินเฟ้อ CPI สัปดาห์นี้`},
+      why:{en:`Rate-cut hopes are fading — that keeps bond yields attractive. Good moment for locking in income.`, th:`ความหวังลดดอกเบี้ยจางลง — ทำให้ผลตอบแทนพันธบัตรยังน่าสนใจ จังหวะดีในการล็อกรายได้`},
+      full:{en:`Wall Street closed lower for a second straight session. The S&P 500 slipped 0.32% to 7,728.20, the Nasdaq Composite fell 0.6% to 26,445.45, and the Dow lost 184 points (−0.34%) to 53,791.85. A tech and semiconductor sell-off — with Intel leading chipmakers lower — combined with rising oil prices and lingering US–Iran uncertainty to pressure risk appetite. Investors are largely on the sidelines ahead of this week's July CPI inflation report, which will shape the Fed's September decision.`, th:`ตลาดหุ้นสหรัฐปิดลบเป็นวันที่สองติดต่อกัน ดัชนี S&P 500 ลง 0.32% ปิดที่ 7,728.20, Nasdaq ลง 0.6% ที่ 26,445.45 และ Dow ลง 184 จุด (−0.34%) ที่ 53,791.85 แรงขายหุ้นกลุ่มเทคและเซมิคอนดักเตอร์ — โดยมี Intel นำกลุ่มชิปลง — รวมกับราคาน้ำมันที่สูงขึ้นและความไม่แน่นอนสหรัฐ–อิหร่าน กดดันความเชื่อมั่น นักลงทุนส่วนใหญ่รอดูตัวเลขเงินเฟ้อ CPI เดือน ก.ค. สัปดาห์นี้ ซึ่งจะกำหนดการตัดสินใจของเฟดในเดือนกันยายน`},
       sources:[{l:"CNBC",u:"https://www.cnbc.com/2026/08/12/stock-market-today-live-updates.html"},{l:"Bloomberg Markets",u:"https://www.bloomberg.com/markets"}]},
     {flag:"🇪🇺", name:{en:"Europe",th:"ยุโรป"}, ix:"DAX (Germany)", val:"26,311", chg:0.26, series:[26180,26240,26299,26311],
-      txt:{en:`<b>Broadly steady; Germany's DAX +0.3%.</b> European stocks held up better than the US. Sentiment softened late on fading hopes of quick US–Iran de-escalation.`,
-           th:`<b>ทรงตัว; DAX เยอรมนี +0.3%</b> หุ้นยุโรปยืนได้ดีกว่าสหรัฐ ความเชื่อมั่นอ่อนลงช่วงท้ายจากความหวังคลายตึงเครียดสหรัฐ–อิหร่านที่จางลง`},
-      why:{en:`"Europe banks" is a favoured global theme — relevant for diversified equity-fund conversations.`,
-           th:`"ธนาคารยุโรป" เป็นธีมโลกที่ได้รับความนิยม — ใช้คุยเรื่องกองทุนหุ้นแบบกระจายการลงทุนได้`},
-      full:{en:`European equities were broadly resilient, outperforming Wall Street. Germany's DAX edged up about 0.3% to around 26,311. Sentiment across the region cooled into the close as optimism over a quick easing of US–Iran tensions faded, with President Trump demanding compensation from Iran while Tehran sought reparations for recent strikes. European banks and value sectors remain a favoured theme among global strategists heading into the second half of 2026.`,
-            th:`หุ้นยุโรปโดยรวมยืนได้ดีและทำได้ดีกว่าตลาดสหรัฐ ดัชนี DAX เยอรมนีขยับขึ้นราว 0.3% สู่ระดับประมาณ 26,311 ความเชื่อมั่นทั่วภูมิภาคเย็นลงช่วงท้ายตลาด เมื่อความหวังว่าความตึงเครียดสหรัฐ–อิหร่านจะคลายเร็วเริ่มจางลง โดยประธานาธิบดีทรัมป์เรียกร้องค่าชดเชยจากอิหร่าน ขณะที่เตหะรานเรียกร้องค่าเสียหายจากการโจมตีที่ผ่านมา หุ้นกลุ่มธนาคารยุโรปและหุ้นคุณค่ายังเป็นธีมที่นักกลยุทธ์ทั่วโลกชื่นชอบในช่วงครึ่งหลังของปี 2026`},
+      txt:{en:`<b>Broadly steady; Germany's DAX +0.3%.</b> European stocks held up better than the US. Sentiment softened late on fading hopes of quick US–Iran de-escalation.`, th:`<b>ทรงตัว; DAX เยอรมนี +0.3%</b> หุ้นยุโรปยืนได้ดีกว่าสหรัฐ ความเชื่อมั่นอ่อนลงช่วงท้ายจากความหวังคลายตึงเครียดสหรัฐ–อิหร่านที่จางลง`},
+      why:{en:`"Europe banks" is a favoured global theme — relevant for diversified equity-fund conversations.`, th:`"ธนาคารยุโรป" เป็นธีมโลกที่ได้รับความนิยม — ใช้คุยเรื่องกองทุนหุ้นแบบกระจายการลงทุนได้`},
+      full:{en:`European equities were broadly resilient, outperforming Wall Street. Germany's DAX edged up about 0.3% to around 26,311. Sentiment across the region cooled into the close as optimism over a quick easing of US–Iran tensions faded. European banks and value sectors remain a favoured theme among global strategists heading into the second half of 2026.`, th:`หุ้นยุโรปโดยรวมยืนได้ดีและทำได้ดีกว่าตลาดสหรัฐ ดัชนี DAX เยอรมนีขยับขึ้นราว 0.3% สู่ระดับประมาณ 26,311 ความเชื่อมั่นทั่วภูมิภาคเย็นลงช่วงท้ายตลาด เมื่อความหวังว่าความตึงเครียดสหรัฐ–อิหร่านจะคลายเร็วเริ่มจางลง หุ้นกลุ่มธนาคารยุโรปและหุ้นคุณค่ายังเป็นธีมที่นักกลยุทธ์ทั่วโลกชื่นชอบในช่วงครึ่งหลังของปี 2026`},
       sources:[{l:"CNBC Markets",u:"https://www.cnbc.com/markets/"},{l:"Bloomberg Europe",u:"https://www.bloomberg.com/europe"}]},
     {flag:"🌏", name:{en:"Asia-Pacific",th:"เอเชีย-แปซิฟิก"}, ix:"Nikkei 225 (Japan)", val:"66,970", chg:2.08, series:[65100,65600,66200,66970],
-      txt:{en:`<b>Japan's Nikkei jumped +2.1%</b> to a record near 66,970 — the region's bright spot even as sentiment elsewhere cooled.`,
-           th:`<b>Nikkei ญี่ปุ่นพุ่ง +2.1%</b> ทำสถิติสูงสุดใกล้ 66,970 — จุดสว่างของภูมิภาคแม้ความเชื่อมั่นที่อื่นจะเย็นลง`},
-      why:{en:`Asian semiconductor demand is a live story — it feeds the UUSTECH tech-fund pitch below.`,
-           th:`ดีมานด์เซมิคอนดักเตอร์เอเชียเป็นเรื่องที่กำลังมา — เชื่อมโยงกับการนำเสนอกองทุนเทค UUSTECH ด้านล่าง`},
-      full:{en:`Japan stood out as Asia's strongest market, with the Nikkei 225 surging about 2.1% to a record near 66,970. The rally was driven by strength in technology and exporters, underscoring resilient demand tied to the AI and semiconductor build-out. Elsewhere in the region sentiment was more mixed, with investors weighing US tariff developments and the direction of the US dollar. Asian chip names remain central to the AI growth narrative that global tech funds are built around.`,
-            th:`ญี่ปุ่นโดดเด่นในฐานะตลาดที่แข็งแกร่งที่สุดในเอเชีย ดัชนี Nikkei 225 พุ่งขึ้นราว 2.1% ทำสถิติสูงสุดใกล้ 66,970 แรงหนุนมาจากหุ้นกลุ่มเทคโนโลยีและผู้ส่งออก สะท้อนดีมานด์ที่แข็งแกร่งซึ่งเชื่อมโยงกับการลงทุน AI และเซมิคอนดักเตอร์ ส่วนตลาดอื่นในภูมิภาคความเชื่อมั่นค่อนข้างผสม นักลงทุนชั่งน้ำหนักเรื่องภาษีสหรัฐและทิศทางเงินดอลลาร์ หุ้นชิปเอเชียยังเป็นหัวใจของเรื่องราวการเติบโตของ AI ที่กองทุนเทคทั่วโลกยึดเป็นแกน`},
+      txt:{en:`<b>Japan's Nikkei jumped +2.1%</b> to a record near 66,970 — the region's bright spot even as sentiment elsewhere cooled.`, th:`<b>Nikkei ญี่ปุ่นพุ่ง +2.1%</b> ทำสถิติสูงสุดใกล้ 66,970 — จุดสว่างของภูมิภาคแม้ความเชื่อมั่นที่อื่นจะเย็นลง`},
+      why:{en:`Asian semiconductor demand is a live story — it feeds the UUSTECH tech-fund pitch below.`, th:`ดีมานด์เซมิคอนดักเตอร์เอเชียเป็นเรื่องที่กำลังมา — เชื่อมโยงกับการนำเสนอกองทุนเทค UUSTECH ด้านล่าง`},
+      full:{en:`Japan stood out as Asia's strongest market, with the Nikkei 225 surging about 2.1% to a record near 66,970, driven by technology and exporters and underscoring resilient demand tied to the AI and semiconductor build-out. Elsewhere in the region sentiment was more mixed as investors weighed US tariff developments and the dollar. Asian chip names remain central to the AI growth narrative behind global tech funds.`, th:`ญี่ปุ่นโดดเด่นในฐานะตลาดที่แข็งแกร่งที่สุดในเอเชีย ดัชนี Nikkei 225 พุ่งขึ้นราว 2.1% ทำสถิติสูงสุดใกล้ 66,970 แรงหนุนจากหุ้นเทคโนโลยีและผู้ส่งออก สะท้อนดีมานด์ที่แข็งแกร่งซึ่งเชื่อมโยงกับการลงทุน AI และเซมิคอนดักเตอร์ ส่วนตลาดอื่นในภูมิภาคความเชื่อมั่นค่อนข้างผสม นักลงทุนชั่งน้ำหนักเรื่องภาษีสหรัฐและทิศทางดอลลาร์ หุ้นชิปเอเชียยังเป็นหัวใจของเรื่องราวการเติบโต AI ที่อยู่เบื้องหลังกองทุนเทคทั่วโลก`},
       sources:[{l:"CNBC Asia",u:"https://www.cnbc.com/asia-markets/"},{l:"Bloomberg Markets",u:"https://www.bloomberg.com/markets"}]},
     {flag:"🇨🇳", name:{en:"China / Hong Kong",th:"จีน / ฮ่องกง"}, ix:"Hang Seng", val:"25,653", chg:-1.10, series:[26050,25980,25830,25653],
-      txt:{en:`<b>Hang Seng −1.1%, Shanghai −0.8%.</b> Chinese equities lagged, pressured by fresh US tariff friction (China rate now 12.5%).`,
-           th:`<b>Hang Seng ลง 1.1%, เซี่ยงไฮ้ ลง 0.8%</b> หุ้นจีนแผ่ว จากแรงกดดันภาษีสหรัฐรอบใหม่ (จีนโดน 12.5%)`},
-      why:{en:`Tariff overhang = clients prefer diversified / Asia-ex-China exposure and bonds over single-country bets.`,
-           th:`แรงกดดันภาษี = ลูกค้ามักเลือกการกระจายลงทุน / เอเชียไม่รวมจีน และตราสารหนี้ มากกว่าเดิมพันประเทศเดียว`},
-      full:{en:`Chinese and Hong Kong equities underperformed the region. The Hang Seng Index fell about 1.1% to 25,653 and the Shanghai Composite slipped 0.8% to 3,934. The main drag was renewed US–China trade friction, with the effective US tariff on Chinese goods now around 12.5% and further measures under discussion. The tariff overhang continues to push many investors toward diversified Asia-ex-China strategies and fixed income rather than concentrated single-country exposure.`,
-            th:`หุ้นจีนและฮ่องกงทำได้แย่กว่าตลาดอื่นในภูมิภาค ดัชนี Hang Seng ลงราว 1.1% ปิดที่ 25,653 และเซี่ยงไฮ้คอมโพสิตลง 0.8% ที่ 3,934 ตัวถ่วงหลักคือความตึงเครียดการค้าสหรัฐ–จีนรอบใหม่ โดยภาษีสหรัฐที่เก็บจากสินค้าจีนอยู่ที่ราว 12.5% และยังมีมาตรการเพิ่มเติมที่อยู่ระหว่างพิจารณา แรงกดดันเรื่องภาษียังผลักให้นักลงทุนจำนวนมากหันไปหากลยุทธ์เอเชียไม่รวมจีนแบบกระจายความเสี่ยงและตราสารหนี้ แทนการกระจุกตัวในประเทศเดียว`},
+      txt:{en:`<b>Hang Seng −1.1%, Shanghai −0.8%.</b> Chinese equities lagged, pressured by fresh US tariff friction (China rate now 12.5%).`, th:`<b>Hang Seng ลง 1.1%, เซี่ยงไฮ้ ลง 0.8%</b> หุ้นจีนแผ่ว จากแรงกดดันภาษีสหรัฐรอบใหม่ (จีนโดน 12.5%)`},
+      why:{en:`Tariff overhang = clients prefer diversified / Asia-ex-China exposure and bonds over single-country bets.`, th:`แรงกดดันภาษี = ลูกค้ามักเลือกการกระจายลงทุน / เอเชียไม่รวมจีน และตราสารหนี้ มากกว่าเดิมพันประเทศเดียว`},
+      full:{en:`Chinese and Hong Kong equities underperformed the region. The Hang Seng fell about 1.1% to 25,653 and the Shanghai Composite slipped 0.8% to 3,934. The main drag was renewed US–China trade friction, with the effective US tariff on Chinese goods now around 12.5% and further measures under discussion. The overhang continues to push many investors toward diversified Asia-ex-China strategies and fixed income rather than concentrated single-country exposure.`, th:`หุ้นจีนและฮ่องกงทำได้แย่กว่าตลาดอื่นในภูมิภาค ดัชนี Hang Seng ลงราว 1.1% ปิดที่ 25,653 และเซี่ยงไฮ้ลง 0.8% ที่ 3,934 ตัวถ่วงหลักคือความตึงเครียดการค้าสหรัฐ–จีนรอบใหม่ โดยภาษีสหรัฐที่เก็บจากสินค้าจีนอยู่ที่ราว 12.5% และยังมีมาตรการเพิ่มเติมที่อยู่ระหว่างพิจารณา แรงกดดันนี้ยังผลักให้นักลงทุนหันไปหากลยุทธ์เอเชียไม่รวมจีนแบบกระจายความเสี่ยงและตราสารหนี้`},
       sources:[{l:"Trading Economics",u:"https://tradingeconomics.com/china/stock-market"},{l:"Bloomberg Markets",u:"https://www.bloomberg.com/markets"}]},
     {flag:"🇹🇭", name:{en:"Thailand",th:"ไทย"}, ix:"SET Index", val:"1,612.00", chg:-0.16, series:[1620,1616,1614,1612],
-      txt:{en:`<b>SET Index ~1,612, roughly flat (−0.2%).</b> Thin, sideways trade on light volume. No fresh catalyst; investors watching global oil and US data.`,
-           th:`<b>ดัชนี SET ~1,612 แทบไม่เปลี่ยน (−0.2%)</b> ซื้อขายแคบ ปริมาณเบาบาง ไร้ปัจจัยใหม่ นักลงทุนจับตาน้ำมันโลกและข้อมูลสหรัฐ`},
-      why:{en:`A quiet SET pushes yield-seeking clients toward offshore bonds and funds — your core book.`,
-           th:`SET ที่เงียบผลักลูกค้าที่มองหาผลตอบแทนไปหาตราสารหนี้และกองทุนต่างประเทศ — ซึ่งเป็นพอร์ตหลักของคุณ`},
-      full:{en:`Thailand's SET Index closed near 1,612, down about 0.16% (−2.6 points), with turnover a modest THB 63.4 billion. The market traded sideways in a narrow range on light volume, reflecting a lack of fresh domestic catalysts. Investors stayed cautious as Middle-East tensions pushed oil above $80 a barrel and awaited key US labour and inflation data. With the local index range-bound, yield-seeking Thai investors continue to look offshore for income and growth.`,
-            th:`ดัชนี SET ของไทยปิดใกล้ 1,612 ลดลงราว 0.16% (−2.6 จุด) มูลค่าการซื้อขายอยู่ที่ราว 6.34 หมื่นล้านบาท ตลาดแกว่งแคบในกรอบจำกัดด้วยปริมาณเบาบาง สะท้อนการขาดปัจจัยใหม่ในประเทศ นักลงทุนระมัดระวังเมื่อความตึงเครียดในตะวันออกกลางดันราคาน้ำมันขึ้นเหนือ 80 ดอลลาร์ต่อบาร์เรล และรอข้อมูลตลาดแรงงานและเงินเฟ้อสหรัฐ เมื่อดัชนีในประเทศเคลื่อนไหวในกรอบ นักลงทุนไทยที่มองหาผลตอบแทนจึงยังหันไปลงทุนต่างประเทศเพื่อรายได้และการเติบโต`},
+      txt:{en:`<b>SET Index ~1,612, roughly flat (−0.2%).</b> Thin, sideways trade on light volume. No fresh catalyst; investors watching global oil and US data.`, th:`<b>ดัชนี SET ~1,612 แทบไม่เปลี่ยน (−0.2%)</b> ซื้อขายแคบ ปริมาณเบาบาง ไร้ปัจจัยใหม่ นักลงทุนจับตาน้ำมันโลกและข้อมูลสหรัฐ`},
+      why:{en:`A quiet SET pushes yield-seeking clients toward offshore bonds and funds — your core book.`, th:`SET ที่เงียบผลักลูกค้าที่มองหาผลตอบแทนไปหาตราสารหนี้และกองทุนต่างประเทศ — ซึ่งเป็นพอร์ตหลักของคุณ`},
+      full:{en:`Thailand's SET Index closed near 1,612, down about 0.16% (−2.6 points), with turnover a modest THB 63.4 billion. The market traded sideways in a narrow range on light volume, reflecting a lack of fresh domestic catalysts. Investors stayed cautious as Middle-East tensions pushed oil above $80 a barrel and awaited key US inflation data. With the local index range-bound, yield-seeking Thai investors continue to look offshore for income and growth.`, th:`ดัชนี SET ของไทยปิดใกล้ 1,612 ลดลงราว 0.16% (−2.6 จุด) มูลค่าการซื้อขายราว 6.34 หมื่นล้านบาท ตลาดแกว่งแคบในกรอบจำกัดด้วยปริมาณเบาบาง สะท้อนการขาดปัจจัยใหม่ในประเทศ นักลงทุนระมัดระวังเมื่อความตึงเครียดตะวันออกกลางดันน้ำมันเหนือ 80 ดอลลาร์ และรอข้อมูลเงินเฟ้อสหรัฐ เมื่อดัชนีในประเทศเคลื่อนไหวในกรอบ นักลงทุนไทยที่มองหาผลตอบแทนจึงยังหันไปลงทุนต่างประเทศ`},
       sources:[{l:"Kaohoon Intl",u:"https://www.kaohooninternational.com/markets/588197"},{l:"Bloomberg Markets",u:"https://www.bloomberg.com/markets"}]},
   ];
 
   const EXTRA=[
     {flag:"🛢️", h:{en:"Commodities & risk",th:"สินค้าโภคภัณฑ์และความเสี่ยง"},
-     txt:{en:`<b>Oil pushed above $80</b> on Iran tensions — the day's main pressure point. <b>Gold jumped above $4,400/oz</b>, a two-month high, as investors reached for safety.`,
-          th:`<b>น้ำมันขึ้นเหนือ $80</b> จากความตึงเครียดอิหร่าน — แรงกดดันหลักของวัน <b>ทองคำพุ่งเหนือ $4,400/ออนซ์</b> สูงสุดในรอบสองเดือน จากการเข้าซื้อสินทรัพย์ปลอดภัย`},
-     why:{en:`Sticky oil = sticky inflation talk = higher-for-longer yields. Gold strength is a natural lead-in to UOB Smart Gold.`,
-          th:`น้ำมันแพงต่อเนื่อง = เงินเฟ้อค้างนาน = ผลตอบแทนสูงนานขึ้น ทองที่แข็งแรงเป็นจังหวะนำเข้าเรื่อง UOB Smart Gold`}},
+     txt:{en:`<b>Oil pushed above $80</b> on Iran tensions — the day's main pressure point. <b>Gold jumped above $4,400/oz</b>, a two-month high, as investors reached for safety.`, th:`<b>น้ำมันขึ้นเหนือ $80</b> จากความตึงเครียดอิหร่าน — แรงกดดันหลักของวัน <b>ทองคำพุ่งเหนือ $4,400/ออนซ์</b> สูงสุดในรอบสองเดือน จากการเข้าซื้อสินทรัพย์ปลอดภัย`},
+     why:{en:`Sticky oil = sticky inflation talk = higher-for-longer yields. Gold strength is a natural lead-in to UOB Smart Gold.`, th:`น้ำมันแพงต่อเนื่อง = เงินเฟ้อค้างนาน = ผลตอบแทนสูงนานขึ้น ทองที่แข็งแรงเป็นจังหวะนำเข้าเรื่อง UOB Smart Gold`}},
     {flag:"💵", h:{en:"Rates & the Fed",th:"ดอกเบี้ยและเฟด"},
-     txt:{en:`<b>Markets see ~50/50 odds of a Fed hike in September</b>, with three officials already voting to raise. The US 10-year Treasury yield sits near 4.68%.`,
-          th:`<b>ตลาดมองโอกาสเฟดขึ้นดอกเบี้ยเดือน ก.ย. ราว 50/50</b> โดยมีกรรมการ 3 คนโหวตให้ขึ้นแล้ว อัตราผลตอบแทนพันธบัตรสหรัฐ 10 ปีอยู่ใกล้ 4.68%`},
-     why:{en:`Yields staying high = new bond money is locking in attractive coupons. Your strongest pitch right now.`,
-          th:`ผลตอบแทนที่ยังสูง = เงินลงทุนใหม่ล็อกคูปองที่น่าสนใจได้ นี่คือจุดขายที่แข็งที่สุดของคุณตอนนี้`}},
+     txt:{en:`<b>Markets see ~50/50 odds of a Fed hike in September</b>, with three officials already voting to raise. The US 10-year Treasury yield sits near 4.68%.`, th:`<b>ตลาดมองโอกาสเฟดขึ้นดอกเบี้ยเดือน ก.ย. ราว 50/50</b> โดยมีกรรมการ 3 คนโหวตให้ขึ้นแล้ว อัตราผลตอบแทนพันธบัตรสหรัฐ 10 ปีอยู่ใกล้ 4.68%`},
+     why:{en:`Yields staying high = new bond money is locking in attractive coupons. Your strongest pitch right now.`, th:`ผลตอบแทนที่ยังสูง = เงินลงทุนใหม่ล็อกคูปองที่น่าสนใจได้ นี่คือจุดขายที่แข็งที่สุดของคุณตอนนี้`}},
   ];
 
   const THEMES=[
-    {cls:"warn", h:{en:"Trump & tariffs",th:"ทรัมป์และภาษี"},
-     p:{en:`<b>A 50% tariff on many Canadian goods starts 19 Aug.</b> China sits at 12.5%. Washington has floated pharma tariffs rising toward 200% later in 2026.`,
-        th:`<b>ภาษี 50% สินค้าแคนาดาหลายรายการเริ่ม 19 ส.ค.</b> จีนอยู่ที่ 12.5% สหรัฐยังส่งสัญญาณอาจขึ้นภาษียาสูงถึง 200% ปลายปี 2026`},
-     w:{en:`Trade risk = equity volatility. Reinforces the case for bonds as ballast.`, th:`ความเสี่ยงการค้า = หุ้นผันผวน ยิ่งตอกย้ำให้ถือตราสารหนี้เป็นตัวถ่วงพอร์ต`}},
-    {cls:"warn", h:{en:"Geopolitics",th:"ภูมิรัฐศาสตร์"},
-     p:{en:`<b>US–Iran tensions keep oil bid.</b> Hopes of quick de-escalation faded; both sides trading demands. A key swing factor right now.`,
-        th:`<b>ความตึงเครียดสหรัฐ–อิหร่านหนุนน้ำมัน</b> ความหวังคลายเครียดเร็วจางลง ทั้งสองฝ่ายยื่นข้อเรียกร้อง เป็นปัจจัยแกว่งสำคัญตอนนี้`},
-     w:{en:`Safe-haven demand supports high-grade bonds, gold and the US dollar.`, th:`ดีมานด์สินทรัพย์ปลอดภัยหนุนพันธบัตรคุณภาพสูง ทองคำ และดอลลาร์`}},
-    {cls:"rate", h:{en:"Interest rates",th:"อัตราดอกเบี้ย"},
-     p:{en:`<b>~50/50 odds of a Fed hike in September.</b> Three officials already voted to raise. A cut is off the table for now.`,
-        th:`<b>โอกาสเฟดขึ้นดอกเบี้ย ก.ย. ราว 50/50</b> กรรมการ 3 คนโหวตขึ้นแล้ว การลดดอกเบี้ยยังไม่อยู่ในการพิจารณา`},
-     w:{en:`Yields staying high = new bond money locks in attractive coupons.`, th:`ผลตอบแทนที่ยังสูง = เงินใหม่ล็อกคูปองที่ดีได้`}},
-    {cls:"rate", h:{en:"Inflation",th:"เงินเฟ้อ"},
-     p:{en:`<b>July US CPI is this week's main event.</b> A hot number could push yields up and stocks down; a soft one could spark relief.`,
-        th:`<b>CPI สหรัฐเดือน ก.ค. คือไฮไลต์สัปดาห์นี้</b> ตัวเลขร้อนแรงอาจดันผลตอบแทนขึ้นและหุ้นลง ถ้าต่ำอาจทำให้ตลาดโล่งใจ`},
-     w:{en:`Prep clients now: if CPI runs hot, expect a jittery equity session.`, th:`เตรียมลูกค้าไว้: ถ้า CPI ร้อนแรง คาดว่าหุ้นจะผันผวน`}},
+    {h:{en:"Trump & tariffs",th:"ทรัมป์และภาษี"}, p:{en:`<b>A 50% tariff on many Canadian goods starts 19 Aug.</b> China sits at 12.5%. Washington has floated pharma tariffs rising toward 200% later in 2026.`, th:`<b>ภาษี 50% สินค้าแคนาดาหลายรายการเริ่ม 19 ส.ค.</b> จีนอยู่ที่ 12.5% สหรัฐยังส่งสัญญาณอาจขึ้นภาษียาสูงถึง 200% ปลายปี 2026`}, w:{en:`Trade risk = equity volatility. Reinforces the case for bonds as ballast.`, th:`ความเสี่ยงการค้า = หุ้นผันผวน ตอกย้ำให้ถือตราสารหนี้เป็นตัวถ่วงพอร์ต`}},
+    {h:{en:"Geopolitics",th:"ภูมิรัฐศาสตร์"}, p:{en:`<b>US–Iran tensions keep oil bid.</b> Hopes of quick de-escalation faded; both sides trading demands. A key swing factor right now.`, th:`<b>ความตึงเครียดสหรัฐ–อิหร่านหนุนน้ำมัน</b> ความหวังคลายเครียดเร็วจางลง ทั้งสองฝ่ายยื่นข้อเรียกร้อง เป็นปัจจัยแกว่งสำคัญตอนนี้`}, w:{en:`Safe-haven demand supports high-grade bonds, gold and the US dollar.`, th:`ดีมานด์สินทรัพย์ปลอดภัยหนุนพันธบัตรคุณภาพสูง ทองคำ และดอลลาร์`}},
+    {h:{en:"Interest rates",th:"อัตราดอกเบี้ย"}, p:{en:`<b>~50/50 odds of a Fed hike in September.</b> Three officials already voted to raise. A cut is off the table for now.`, th:`<b>โอกาสเฟดขึ้นดอกเบี้ย ก.ย. ราว 50/50</b> กรรมการ 3 คนโหวตขึ้นแล้ว การลดดอกเบี้ยยังไม่อยู่ในการพิจารณา`}, w:{en:`Yields staying high = new bond money locks in attractive coupons.`, th:`ผลตอบแทนที่ยังสูง = เงินใหม่ล็อกคูปองที่ดีได้`}},
+    {h:{en:"Inflation",th:"เงินเฟ้อ"}, p:{en:`<b>July US CPI is this week's main event.</b> A hot number could push yields up and stocks down; a soft one could spark relief.`, th:`<b>CPI สหรัฐเดือน ก.ค. คือไฮไลต์สัปดาห์นี้</b> ตัวเลขร้อนแรงอาจดันผลตอบแทนขึ้นและหุ้นลง ถ้าต่ำอาจทำให้ตลาดโล่งใจ`}, w:{en:`Prep clients now: if CPI runs hot, expect a jittery equity session.`, th:`เตรียมลูกค้าไว้: ถ้า CPI ร้อนแรง คาดว่าหุ้นจะผันผวน`}},
   ];
 
   const WATCH=[
-    {day:{en:"Wed",th:"พุธ"}, date:{en:"this wk",th:"สัปดาห์นี้"}, imp:"h",
-     t:{en:"US CPI — July (consumer inflation)",th:"CPI สหรัฐ — ก.ค. (เงินเฟ้อผู้บริโภค)"},
-     d:{en:"The week's headline. Decides the Fed's September hike-or-hold. Hot = stocks wobble, yields up.",th:"ไฮไลต์ของสัปดาห์ ชี้ชะตาเฟดว่าจะขึ้นหรือคงดอกเบี้ย ก.ย. ถ้าร้อน = หุ้นสั่น ผลตอบแทนขึ้น"}},
-    {day:{en:"Fri",th:"ศุกร์"}, date:{en:"this wk",th:"สัปดาห์นี้"}, imp:"m",
-     t:{en:"US retail sales — July",th:"ยอดค้าปลีกสหรัฐ — ก.ค."},
-     d:{en:"Is the US consumer still spending? A key growth check for global stocks.",th:"ผู้บริโภคสหรัฐยังใช้จ่ายอยู่ไหม? เช็กการเติบโตที่สำคัญต่อหุ้นทั่วโลก"}},
-    {day:{en:"Sep",th:"ก.ย."}, date:{en:"ahead",th:"ข้างหน้า"}, imp:"h",
-     t:{en:"Fed policy meeting",th:"การประชุมนโยบายเฟด"},
-     d:{en:"The decision all this data feeds into. ~50/50 odds of a hike right now — the biggest driver for bond yields.",th:"การตัดสินใจที่ข้อมูลทั้งหมดส่งผลถึง โอกาสขึ้นดอกเบี้ยราว 50/50 — ปัจจัยใหญ่สุดต่อผลตอบแทนพันธบัตร"}},
+    {day:{en:"Wed",th:"พุธ"}, date:{en:"this wk",th:"สัปดาห์นี้"}, imp:"h", t:{en:"US CPI — July (consumer inflation)",th:"CPI สหรัฐ — ก.ค. (เงินเฟ้อผู้บริโภค)"}, d:{en:"The week's headline. Decides the Fed's September hike-or-hold. Hot = stocks wobble, yields up.",th:"ไฮไลต์ของสัปดาห์ ชี้ชะตาเฟดว่าจะขึ้นหรือคงดอกเบี้ย ก.ย. ถ้าร้อน = หุ้นสั่น ผลตอบแทนขึ้น"}},
+    {day:{en:"Fri",th:"ศุกร์"}, date:{en:"this wk",th:"สัปดาห์นี้"}, imp:"m", t:{en:"US retail sales — July",th:"ยอดค้าปลีกสหรัฐ — ก.ค."}, d:{en:"Is the US consumer still spending? A key growth check for global stocks.",th:"ผู้บริโภคสหรัฐยังใช้จ่ายอยู่ไหม? เช็กการเติบโตที่สำคัญต่อหุ้นทั่วโลก"}},
+    {day:{en:"Sep",th:"ก.ย."}, date:{en:"ahead",th:"ข้างหน้า"}, imp:"h", t:{en:"Fed policy meeting",th:"การประชุมนโยบายเฟด"}, d:{en:"The decision all this data feeds into. ~50/50 odds of a hike — the biggest driver for bond yields.",th:"การตัดสินใจที่ข้อมูลทั้งหมดส่งผลถึง โอกาสขึ้นดอกเบี้ยราว 50/50 — ปัจจัยใหญ่สุดต่อผลตอบแทนพันธบัตร"}},
   ];
 
-  const INDICES=[
-    {nm:"S&P 500", rg:{en:"US",th:"สหรัฐ"}, val:"7,728.20", chg:-0.32, series:[7802,7757.64,7770,7745,7728.20]},
-    {nm:"Nasdaq Comp", rg:{en:"US",th:"สหรัฐ"}, val:"26,445.45", chg:-0.60, series:[26690.62,26610,26520,26445.45]},
-    {nm:"Dow Jones", rg:{en:"US",th:"สหรัฐ"}, val:"53,791.85", chg:-0.34, series:[54036.93,53980,53900,53791.85]},
-    {nm:"DAX", rg:{en:"Germany",th:"เยอรมนี"}, val:"26,311", chg:0.26, series:[26180,26240,26299,26311]},
-    {nm:"Nikkei 225", rg:{en:"Japan",th:"ญี่ปุ่น"}, val:"66,970", chg:2.08, series:[65100,65600,66200,66970]},
-    {nm:"Shanghai Comp", rg:{en:"China",th:"จีน"}, val:"3,934.09", chg:-0.82, series:[3985,3970,3952,3934.09]},
-    {nm:"Hang Seng", rg:{en:"Hong Kong",th:"ฮ่องกง"}, val:"25,653", chg:-1.10, series:[26050,25980,25830,25653]},
-    {nm:"SET Index", rg:{en:"Thailand",th:"ไทย"}, val:"1,612.00", chg:-0.16, series:[1620,1616,1614,1612]},
+  const TECH=[
+    {tk:"NVDA", sub:{en:"Nvidia · chips",th:"Nvidia · ชิป"}, px:"$217.55", chg:null, series:[217.55], asof:"10 Aug"},
+    {tk:"MSFT", sub:{en:"Microsoft",th:"Microsoft"}, px:"$503.81", chg:null, series:[503.81], asof:"recent"},
+    {tk:"AAPL", sub:{en:"Apple",th:"Apple"}, px:"$305.06", chg:0.05, series:[304.91,305.06], asof:"11 Aug"},
+    {tk:"GOOGL", sub:{en:"Alphabet",th:"Alphabet"}, px:"$353.47", chg:-0.88, series:[356.61,353.47], asof:"11 Aug"},
+    {tk:"AMZN", sub:{en:"Amazon",th:"Amazon"}, px:"$274.48", chg:0.82, series:[272.25,274.48], asof:"11 Aug"},
+    {tk:"AVGO", sub:{en:"Broadcom · chips · intraday",th:"Broadcom · ชิป · ระหว่างวัน"}, px:"$413–427", chg:null, series:[420], asof:"11 Aug"},
+  ];
+  const FIN=[
+    {tk:"JPM", sub:{en:"JPMorgan Chase",th:"JPMorgan Chase"}, px:"$359.79", chg:null, series:[359.79], asof:"10 Aug"},
+    {tk:"GS", sub:{en:"Goldman Sachs",th:"Goldman Sachs"}, px:"$1,034.51", chg:null, series:[1034.51], asof:"10 Aug"},
+    {tk:"MA", sub:{en:"Mastercard",th:"Mastercard"}, px:"$561.44", chg:null, series:[561.44], asof:"11 Aug"},
+    {tk:"V", sub:{en:"Visa · intraday range",th:"Visa · ช่วงระหว่างวัน"}, px:"$360–365", chg:null, series:[362], asof:"11 Aug"},
+  ];
+  const HEALTH=[
+    {tk:"LLY", sub:{en:"Eli Lilly · JPM target $1,400",th:"Eli Lilly · เป้า JPM $1,400"}, px:"~$1,149", chg:null, series:[1148.84], asof:"recent"},
+    {tk:"UNH", sub:{en:"UnitedHealth",th:"UnitedHealth"}, px:"$402.19", chg:null, series:[402.19], asof:"11 Aug"},
+    {tk:"JNJ", sub:{en:"Johnson & Johnson",th:"Johnson & Johnson"}, px:"$259.80", chg:-0.77, series:[261.82,259.80], asof:"11 Aug"},
+    {tk:"ABBV", sub:{en:"AbbVie",th:"AbbVie"}, px:"$250.09", chg:0.85, series:[247.98,250.09], asof:"11 Aug"},
+    {tk:"MRK", sub:{en:"Merck",th:"Merck"}, px:"$130.46", chg:null, series:[130.46], asof:"11 Aug"},
   ];
   const RATES=[
-    {tk:"US 2Y Treasury", sub:{en:"yield",th:"ผลตอบแทน"}, px:"4.212%", chg:0.0, series:[4.21]},
-    {tk:"US 10Y Treasury", sub:{en:"yield",th:"ผลตอบแทน"}, px:"4.682%", chg:0.0, series:[4.66,4.67,4.69,4.682]},
-    {tk:"US 30Y Treasury", sub:{en:"yield",th:"ผลตอบแทน"}, px:"5.231%", chg:0.0, series:[5.23]},
+    {tk:"US 2Y Treasury", sub:{en:"yield",th:"ผลตอบแทน"}, px:"4.212%", chg:0.0, series:[4.21], asof:"11 Aug"},
+    {tk:"US 10Y Treasury", sub:{en:"yield",th:"ผลตอบแทน"}, px:"4.682%", chg:0.0, series:[4.66,4.67,4.69,4.682], asof:"12 Aug"},
+    {tk:"US 30Y Treasury", sub:{en:"yield",th:"ผลตอบแทน"}, px:"5.231%", chg:0.0, series:[5.23], asof:"11 Aug"},
     {tk:"Gold (spot)", sub:{en:"per ounce · 2-month high",th:"ต่อออนซ์ · สูงสุด 2 เดือน"}, px:"$4,400", chg:0.9, series:[4310,4355,4380,4400], asof:"11 Aug"},
     {tk:"Brent Crude", sub:{en:"oil, per barrel",th:"น้ำมัน ต่อบาร์เรล"}, px:"$80+", chg:1.2, series:[77.5,78.4,79.6,80.4], asof:"11 Aug"},
   ];
-  const TECH=[
-    {tk:"NVDA", sub:{en:"Nvidia · chips",th:"Nvidia · ชิป"}, px:"$217.55", chg:-1.0, series:[221,219.5,218.2,217.55], asof:"10 Aug"},
-    {tk:"AAPL", sub:{en:"Apple",th:"Apple"}, px:"$305.06", chg:0.05, series:[303.1,304.0,305.0,305.06], asof:"11 Aug"},
-    {tk:"MSFT", sub:{en:"Microsoft",th:"Microsoft"}, px:"$503.81", chg:0.0, series:[503.81], asof:"recent"},
-  ];
-  const FIN=[{tk:"JPM", sub:{en:"JPMorgan Chase",th:"JPMorgan Chase"}, px:"—", chg:null, series:[], asof:"see terminal"}];
-  const HEALTH=[{tk:"LLY", sub:{en:"Eli Lilly · JPM target $1,400",th:"Eli Lilly · เป้า JPM $1,400"}, px:"~$1,297", chg:null, series:[], asof:"consensus, Aug"}];
 
   const OFFSHORE=[
-    {code:"United Asian Bond Fund", name:{en:"UOBAM · Asian USD investment-grade bonds",th:"UOBAM · พันธบัตรเอเชียเกรดลงทุนสกุล USD"}, rk:{en:"Bond · income",th:"ตราสารหนี้ · รายได้"},
-     desc:{en:"Stable income + capital appreciation from Asian government & corporate debt, in USD. Your core defensive offshore pick for bond clients.",th:"รายได้สม่ำเสมอ + โอกาสเติบโตของทุน จากพันธบัตรรัฐบาลและหุ้นกู้เอเชียสกุล USD ตัวเลือกตั้งรับหลักสำหรับลูกค้าตราสารหนี้"}, hold:["Asia USD IG","Diversified","USD"]},
-    {code:"United Asian High Yield Bond", name:{en:"UOBAM · Asian high-yield bonds",th:"UOBAM · หุ้นกู้ผลตอบแทนสูงเอเชีย"}, rk:{en:"Higher income",th:"รายได้สูงขึ้น"},
-     desc:{en:"Higher coupons from Asian high-yield issuers — for yield-hungry clients who accept more credit risk.",th:"คูปองสูงจากผู้ออกหุ้นกู้ผลตอบแทนสูงในเอเชีย — สำหรับลูกค้าที่ต้องการผลตอบแทนสูงและรับความเสี่ยงเครดิตได้มากขึ้น"}, hold:["Asia HY","Higher coupon","USD"]},
+    {code:"United Asian Bond Fund", name:{en:"UOBAM · Asian USD investment-grade bonds",th:"UOBAM · พันธบัตรเอเชียเกรดลงทุนสกุล USD"}, rk:{en:"Bond · income",th:"ตราสารหนี้ · รายได้"}, desc:{en:"Stable income + capital appreciation from Asian government & corporate debt, in USD. Your core defensive offshore pick for bond clients.",th:"รายได้สม่ำเสมอ + โอกาสเติบโตของทุน จากพันธบัตรรัฐบาลและหุ้นกู้เอเชียสกุล USD ตัวเลือกตั้งรับหลักสำหรับลูกค้าตราสารหนี้"}, hold:["Asia USD IG","Diversified","USD"]},
+    {code:"United Asian High Yield Bond", name:{en:"UOBAM · Asian high-yield bonds",th:"UOBAM · หุ้นกู้ผลตอบแทนสูงเอเชีย"}, rk:{en:"Higher income",th:"รายได้สูงขึ้น"}, desc:{en:"Higher coupons from Asian high-yield issuers — for yield-hungry clients who accept more credit risk.",th:"คูปองสูงจากผู้ออกหุ้นกู้ผลตอบแทนสูงในเอเชีย — สำหรับลูกค้าที่ต้องการผลตอบแทนสูงและรับความเสี่ยงเครดิตได้มากขึ้น"}, hold:["Asia HY","Higher coupon","USD"]},
   ];
   const ONSHORE=[
-    {code:"UGIS", name:{en:"United Global Income Strategic Bond",th:"United Global Income Strategic Bond"}, rk:{en:"Bond · income",th:"ตราสารหนี้ · รายได้"},
-     desc:{en:"Global diversified bond income in one Thai-registered fund. The easy THB way to give clients offshore bond exposure.",th:"รายได้จากตราสารหนี้ทั่วโลกแบบกระจายในกองทุนจดทะเบียนไทยกองเดียว วิธีง่าย ๆ ในการให้ลูกค้าลงทุนตราสารหนี้ต่างประเทศด้วยเงินบาท"}, hold:["Global bonds","Income","THB"]},
-    {code:"UUSTECH", name:{en:"United US Technology Fund",th:"United US Technology Fund"}, rk:{en:"US tech · high risk",th:"หุ้นเทคสหรัฐ · เสี่ยงสูง"},
-     desc:{en:"US technology & semiconductor leaders — the AI / chip growth theme, bought in baht.",th:"ผู้นำเทคโนโลยีและเซมิคอนดักเตอร์สหรัฐ — ธีมการเติบโต AI / ชิป ซื้อได้ด้วยเงินบาท"}, hold:["US tech","Semis","AI"]},
-    {code:"UGQG", name:{en:"United Global Quality Growth",th:"United Global Quality Growth"}, rk:{en:"Global equity",th:"หุ้นทั่วโลก"},
-     desc:{en:"High-quality global growth companies. A steadier core-equity sleeve than a pure-tech play.",th:"บริษัทเติบโตคุณภาพสูงทั่วโลก แกนหุ้นที่นิ่งกว่ากองเทคล้วน"}, hold:["Global quality","Growth"]},
-    {code:"UOBSG", name:{en:"UOB Smart Gold",th:"UOB Smart Gold"}, rk:{en:"Gold · alternative",th:"ทองคำ · ทางเลือก"},
-     desc:{en:"Tracks the gold price — timely with gold at a two-month high. A diversifier and safe-haven talking point.",th:"อิงราคาทองคำ — เหมาะจังหวะที่ทองทำจุดสูงสุดรอบ 2 เดือน เป็นตัวกระจายความเสี่ยงและจุดคุยเรื่องสินทรัพย์ปลอดภัย"}, hold:["Gold","Safe-haven","Diversifier"]},
+    {code:"UGIS", name:{en:"United Global Income Strategic Bond",th:"United Global Income Strategic Bond"}, rk:{en:"Bond · income",th:"ตราสารหนี้ · รายได้"}, desc:{en:"Global diversified bond income in one Thai-registered fund. The easy THB way to give clients offshore bond exposure.",th:"รายได้จากตราสารหนี้ทั่วโลกแบบกระจายในกองทุนจดทะเบียนไทยกองเดียว วิธีง่าย ๆ ให้ลูกค้าลงทุนตราสารหนี้ต่างประเทศด้วยเงินบาท"}, hold:["Global bonds","Income","THB"]},
+    {code:"UUSTECH", name:{en:"United US Technology Fund",th:"United US Technology Fund"}, rk:{en:"US tech · high risk",th:"หุ้นเทคสหรัฐ · เสี่ยงสูง"}, desc:{en:"US technology & semiconductor leaders — the AI / chip growth theme, bought in baht.",th:"ผู้นำเทคโนโลยีและเซมิคอนดักเตอร์สหรัฐ — ธีมการเติบโต AI / ชิป ซื้อได้ด้วยเงินบาท"}, hold:["US tech","Semis","AI"]},
+    {code:"UGQG", name:{en:"United Global Quality Growth",th:"United Global Quality Growth"}, rk:{en:"Global equity",th:"หุ้นทั่วโลก"}, desc:{en:"High-quality global growth companies. A steadier core-equity sleeve than a pure-tech play.",th:"บริษัทเติบโตคุณภาพสูงทั่วโลก แกนหุ้นที่นิ่งกว่ากองเทคล้วน"}, hold:["Global quality","Growth"]},
+    {code:"UOBSG", name:{en:"UOB Smart Gold",th:"UOB Smart Gold"}, rk:{en:"Gold · alternative",th:"ทองคำ · ทางเลือก"}, desc:{en:"Tracks the gold price — timely with gold at a two-month high. A diversifier and safe-haven talking point.",th:"อิงราคาทองคำ — เหมาะจังหวะที่ทองทำจุดสูงสุดรอบ 2 เดือน เป็นตัวกระจายความเสี่ยงและจุดคุยเรื่องสินทรัพย์ปลอดภัย"}, hold:["Gold","Safe-haven","Diversifier"]},
   ];
 
   const TALK=[
-    {h:{en:"Selling bonds",th:"การขายตราสารหนี้"}, li:{en:["\"Rate cuts are on hold — yields are still historically attractive. Lock income in now.\"","Tariffs + Iran = volatility. Position bonds as the <b>ballast</b> in the portfolio.","UGIS (onshore, THB) or United Asian Bond (offshore, USD) give yield without betting on one stock."],
-      th:["\"การลดดอกเบี้ยถูกพักไว้ — ผลตอบแทนยังน่าสนใจในเชิงประวัติศาสตร์ ล็อกรายได้ตอนนี้เลย\"","ภาษี + อิหร่าน = ความผันผวน วางตราสารหนี้เป็น <b>ตัวถ่วงสมดุล</b> ของพอร์ต","UGIS (ในประเทศ เงินบาท) หรือ United Asian Bond (ต่างประเทศ USD) ให้ผลตอบแทนโดยไม่ต้องเดิมพันหุ้นตัวเดียว"]}},
-    {h:{en:"Selling tech / gold funds",th:"การขายกองทุนเทค / ทองคำ"}, li:{en:["AI-chip demand story is intact — frame UUSTECH as <b>diversified</b> tech exposure vs. one risky name.","Gold at a two-month high: UOB Smart Gold (UOBSG) is a timely safe-haven talking point.","Pair growth funds with bonds so the client isn't all-in on volatility."],
-      th:["เรื่องดีมานด์ชิป AI ยังแข็งแรง — นำเสนอ UUSTECH เป็นการลงทุนเทคแบบ <b>กระจายความเสี่ยง</b> แทนหุ้นเสี่ยงตัวเดียว","ทองทำจุดสูงสุดรอบ 2 เดือน: UOB Smart Gold (UOBSG) เป็นจุดคุยเรื่องสินทรัพย์ปลอดภัยที่เหมาะจังหวะ","จับคู่กองทุนเติบโตกับตราสารหนี้ เพื่อไม่ให้ลูกค้าทุ่มไปกับความผันผวนทั้งหมด"]}},
-    {h:{en:"Selling insurance (Prudential)",th:"การขายประกัน (Prudential)"}, li:{en:["Choppy markets = the perfect moment for <b>guaranteed / protected</b> outcomes.","Use volatility to introduce capital protection and legacy planning.","Position insurance as the \"sleep-at-night\" layer beneath the investments."],
-      th:["ตลาดผันผวน = จังหวะเหมาะสำหรับผลตอบแทนแบบ <b>การันตี / คุ้มครอง</b>","ใช้ความผันผวนเปิดเรื่องการคุ้มครองเงินต้นและการวางแผนส่งต่อมรดก","วางประกันเป็นชั้น \"นอนหลับสบาย\" ที่รองรับการลงทุน"]}},
+    {h:{en:"Selling bonds",th:"การขายตราสารหนี้"}, li:{en:["\"Rate cuts are on hold — yields are still historically attractive. Lock income in now.\"","Tariffs + Iran = volatility. Position bonds as the <b>ballast</b> in the portfolio.","UGIS (onshore, THB) or United Asian Bond (offshore, USD) give yield without betting on one stock."], th:["\"การลดดอกเบี้ยถูกพักไว้ — ผลตอบแทนยังน่าสนใจ ล็อกรายได้ตอนนี้เลย\"","ภาษี + อิหร่าน = ความผันผวน วางตราสารหนี้เป็น <b>ตัวถ่วงสมดุล</b> ของพอร์ต","UGIS (ในประเทศ เงินบาท) หรือ United Asian Bond (ต่างประเทศ USD) ให้ผลตอบแทนโดยไม่ต้องเดิมพันหุ้นตัวเดียว"]}},
+    {h:{en:"Selling tech / gold funds",th:"การขายกองทุนเทค / ทองคำ"}, li:{en:["AI-chip demand story is intact — frame UUSTECH as <b>diversified</b> tech exposure vs. one risky name.","Gold at a two-month high: UOB Smart Gold (UOBSG) is a timely safe-haven talking point.","Pair growth funds with bonds so the client isn't all-in on volatility."], th:["เรื่องดีมานด์ชิป AI ยังแข็งแรง — นำเสนอ UUSTECH เป็นการลงทุนเทคแบบ <b>กระจายความเสี่ยง</b> แทนหุ้นเสี่ยงตัวเดียว","ทองทำจุดสูงสุดรอบ 2 เดือน: UOB Smart Gold (UOBSG) เป็นจุดคุยเรื่องสินทรัพย์ปลอดภัยที่เหมาะจังหวะ","จับคู่กองทุนเติบโตกับตราสารหนี้ เพื่อไม่ให้ลูกค้าทุ่มไปกับความผันผวนทั้งหมด"]}},
+    {h:{en:"Selling insurance (Prudential)",th:"การขายประกัน (Prudential)"}, li:{en:["Choppy markets = the perfect moment for <b>guaranteed / protected</b> outcomes.","Use volatility to introduce capital protection and legacy planning.","Position insurance as the \"sleep-at-night\" layer beneath the investments."], th:["ตลาดผันผวน = จังหวะเหมาะสำหรับผลตอบแทนแบบ <b>การันตี / คุ้มครอง</b>","ใช้ความผันผวนเปิดเรื่องการคุ้มครองเงินต้นและการวางแผนส่งต่อมรดก","วางประกันเป็นชั้น \"นอนหลับสบาย\" ที่รองรับการลงทุน"]}},
   ];
 
-  // ================= HELPERS =================
   function spark(series, chg){
     const w=84,h=26,p=3;
     if(!series||series.length===0) return `<span style="font-size:11px;color:var(--faint)">—</span>`;
@@ -490,27 +434,20 @@
     box.addEventListener('touchmove',move,{passive:true}); box.addEventListener('touchend',leave);
   }
 
-  // ================= RENDER =================
   function render(){
-    document.documentElement.lang = L;
-    // static
-    $('stamp').textContent=t(S.stamp); $('themelbl').textContent=t(S.themelbl);
-    $('lang').textContent = L==='en'?'ไทย':'EN';
-    $('eyebrow').textContent=t(S.eyebrow); $('h1').textContent=t(S.h1); $('sub').textContent=t(S.sub);
+    document.documentElement.lang=L;
+    $('stamp').textContent=t(S.stamp); $('themelbl').textContent=t(S.themelbl); $('lang').textContent=L==='en'?'ไทย':'EN';
+    $('hero-kicker').textContent=t(S.heroKicker); $('hero-title').textContent=t(S.heroTitle); $('hero-deck').textContent=t(S.heroDeck); $('hero-note').textContent=t(S.heroNote);
+    $('hero-meta').textContent = (L==='th'?'ครอบคลุมการซื้อขาย ':'Covering the session of ')+t(S.dbCovVal);
     $('db-ed').innerHTML=`${t(S.dbEd)}: <b>${new Date().toLocaleDateString(L==='th'?'th-TH':'en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</b>`;
-    $('db-cov').innerHTML=`${t(S.dbCov)} <b>${t(S.dbCovVal)}</b>`;
-    $('db-next').innerHTML=`${t(S.dbNext)}: <b>${t(S.dbNextVal)}</b>`;
-    $('s-brief').textContent=t(S.sBrief); $('h-brief').textContent=t(S.hBrief);
-    $('leadtag').textContent=t(S.leadtag); $('leadtxt').innerHTML=t(S.leadtxt);
-    $('s-themes').textContent=t(S.sThemes);
-    $('s-watch').textContent=t(S.sWatch); $('h-watch').textContent=t(S.hWatch); $('watchnote').innerHTML=t(S.watchnote);
+    $('db-cov').innerHTML=`${t(S.dbCov)} <b>${t(S.dbCovVal)}</b>`; $('db-next').innerHTML=`${t(S.dbNext)}: <b>${t(S.dbNextVal)}</b>`;
+    $('s-brief').textContent=t(S.sBrief); $('h-brief').textContent=t(S.hBrief); $('leadtag').textContent=t(S.leadtag); $('leadtxt').innerHTML=t(S.leadtxt);
+    $('s-themes').textContent=t(S.sThemes); $('s-watch').textContent=t(S.sWatch); $('h-watch').textContent=t(S.hWatch); $('watchnote').innerHTML=t(S.watchnote);
     $('s-prices').textContent=t(S.sPrices); $('h-prices').textContent=t(S.hPrices); $('pricenote').textContent=t(S.pricenote);
     $('b-sell').textContent=t(S.bSell); $('s-funds').textContent=t(S.sFunds);
     $('sh-off').innerHTML=`${t(S.shOff)} <small>${t(S.shOffSub)}</small>`; $('sh-on').innerHTML=`${t(S.shOn)} <small>${t(S.shOnSub)}</small>`;
-    $('s-talk').textContent=t(S.sTalk); $('s-markets').textContent=t(S.sMarkets); $('h-markets').textContent=t(S.hMarkets);
-    $('f-src').textContent=t(S.fSrc); $('disc').innerHTML=t(S.disc); $('f-foot').textContent=t(S.foot);
+    $('s-talk').textContent=t(S.sTalk); $('f-src').textContent=t(S.fSrc); $('disc').innerHTML=t(S.disc); $('f-foot').textContent=t(S.foot);
 
-    // countries
     $('countrygrid').innerHTML=COUNTRIES.map((c,i)=>`
       <div class="card ccard">
         <div class="chdr"><div class="ci"><h3 style="margin:0"><span class="flag">${c.flag}</span> ${t(c.name)}</h3><span class="ix">${c.ix}</span></div>
@@ -519,54 +456,28 @@
         <div class="chartcap">${t(S.recent)}</div>
         <p>${t(c.txt)}</p>
         <div class="why"><span>${t(S.foryou)}</span> ${t(c.why)}</div>
-        <button class="expand" data-i="${i}">${t(S.readfull)} <span class="cv">▾</span></button>
+        <button class="expand">${t(S.readfull)} <span class="cv">▾</span></button>
         <div class="full" hidden><p style="margin:0">${t(c.full)}</p>
           <div class="srcline"><span class="srclabel">${t(S.sources)}</span>${c.sources.map(s=>`<a class="srcpill" href="${s.u}" target="_blank" rel="noopener">${s.l} ↗</a>`).join('')}</div></div>
       </div>`).join('');
+    $('extragrid').innerHTML=EXTRA.map(e=>`<div class="card"><h3><span class="flag">${e.flag}</span> ${t(e.h)}</h3><p>${t(e.txt)}</p><div class="why"><span>${t(S.foryou)}</span> ${t(e.why)}</div></div>`).join('');
+    $('themegrid').innerHTML=THEMES.map(x=>`<div class="card themecard"><h3>${t(x.h)}</h3><p>${t(x.p)}</p><div class="why"><span>${t(S.impact)}</span> ${t(x.w)}</div></div>`).join('');
+    $('watchlist').innerHTML=WATCH.map(w=>`<div class="wrow"><div class="wd"><b>${t(w.day)}</b><small>${t(w.date)}</small></div><div class="wt"><b>${t(w.t)}</b><p>${t(w.d)}</p></div><span class="imp ${w.imp}">${w.imp==='h'?(L==='th'?'สูง':'High'):w.imp==='m'?(L==='th'?'กลาง':'Medium'):(L==='th'?'ต่ำ':'Low')}</span></div>`).join('');
 
-    $('extragrid').innerHTML=EXTRA.map(e=>`
-      <div class="card"><h3><span class="flag">${e.flag}</span> ${t(e.h)}</h3><p>${t(e.txt)}</p>
-        <div class="why"><span>${t(S.foryou)}</span> ${t(e.why)}</div></div>`).join('');
-
-    $('themegrid').innerHTML=THEMES.map(x=>`
-      <div class="card themecard ${x.cls}"><h3>${t(x.h)}</h3><p>${t(x.p)}</p>
-        <div class="why"><span>${t(S.impact)}</span> ${t(x.w)}</div></div>`).join('');
-
-    $('watchlist').innerHTML=WATCH.map(w=>`
-      <div class="wrow"><div class="wd"><b>${t(w.day)}</b><small>${t(w.date)}</small></div>
-        <div class="wt"><b>${t(w.t)}</b><p>${t(w.d)}</p></div>
-        <span class="imp ${w.imp}">${w.imp==='h'?(L==='th'?'สูง':'High'):w.imp==='m'?(L==='th'?'กลาง':'Medium'):(L==='th'?'ต่ำ':'Low')}</span></div>`).join('');
-
-    $('idxgrid').innerHTML=INDICES.map(i=>`
-      <div class="card idx"><div class="nm"><span>${i.nm}</span><span class="rg">${t(i.rg)}</span></div>
-        <div class="val num">${i.val}</div>
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">${chgPill(i.chg)} ${spark(i.series,i.chg)}</div></div>`).join('');
-
-    const pg=(title,rows)=>`<div class="pgroup-h">${title}</div>`+rows.map(r=>`
-      <div class="prow"><div class="tk"><b>${r.tk}</b><small>${t(r.sub)}</small></div>
-        <div class="spark">${spark(r.series,r.chg)}</div><div class="px num">${r.px}</div>
-        <div class="meta">${chgPill(r.chg)}<br>${L==='th'?'ณ':'as of'} ${r.asof||'11 Aug'}</div></div>`).join('');
+    const pg=(title,rows)=>`<div class="pgroup-h">${title}</div>`+rows.map(r=>`<div class="prow"><div class="tk"><b>${r.tk}</b><small>${t(r.sub)}</small></div><div class="spark">${spark(r.series,r.chg)}</div><div class="px num">${r.px}</div><div class="meta">${chgPill(r.chg)}<br>${L==='th'?'ณ':'as of'} ${r.asof}</div></div>`).join('');
     $('priceboard').innerHTML=pg(L==='th'?'เทคโนโลยี':'Technology',TECH)+pg(L==='th'?'การเงิน':'Financials',FIN)+pg(L==='th'?'สุขภาพ':'Healthcare',HEALTH)+pg(L==='th'?'พันธบัตรสหรัฐ ทองคำ น้ำมัน':'US Treasuries, gold & oil',RATES);
 
     const fh=f=>`<div class="fund"><div class="top"><div class="code">${f.code}<small>${t(f.name)}</small></div><span class="rk">${t(f.rk)}</span></div><p>${t(f.desc)}</p><div class="hold">${f.hold.map(h=>`<span class="chip">${h}</span>`).join('')}</div></div>`;
     $('offgrid').innerHTML=OFFSHORE.map(fh).join(''); $('ongrid').innerHTML=ONSHORE.map(fh).join('');
-
     $('talkgrid').innerHTML=TALK.map(c=>`<div class="card"><h3>${t(c.h)}</h3><ol>${t(c.li).map(x=>`<li>${x}</li>`).join('')}</ol></div>`).join('');
 
-    // wire charts + expanders
     document.querySelectorAll('.chartbox').forEach(b=>{drawChart(b);wireChart(b);});
-    document.querySelectorAll('.expand').forEach(btn=>btn.onclick=()=>{
-      const full=btn.nextElementSibling, cv=btn.querySelector('.cv');
-      const open=full.hasAttribute('hidden'); if(open){full.removeAttribute('hidden');cv.textContent='▴';}else{full.setAttribute('hidden','');cv.textContent='▾';}
-    });
+    document.querySelectorAll('.expand').forEach(btn=>btn.onclick=()=>{ const full=btn.nextElementSibling, cv=btn.querySelector('.cv'); if(full.hasAttribute('hidden')){full.removeAttribute('hidden');cv.textContent='▴';}else{full.setAttribute('hidden','');cv.textContent='▾';} });
   }
-
-  function renderCharts(){ document.querySelectorAll('.chartbox').forEach(drawChart); }
+  const renderCharts=()=>document.querySelectorAll('.chartbox').forEach(drawChart);
 
   $('lang').onclick=()=>{ L=L==='en'?'th':'en'; render(); };
-  $('theme').onclick=()=>{ const r=document.documentElement, cur=r.getAttribute('data-theme'), sd=matchMedia('(prefers-color-scheme:dark)').matches;
-    r.setAttribute('data-theme', cur?(cur==='dark'?'light':'dark'):(sd?'light':'dark')); renderCharts(); };
+  $('theme').onclick=()=>{ const r=document.documentElement, cur=r.getAttribute('data-theme'), sd=matchMedia('(prefers-color-scheme:dark)').matches; r.setAttribute('data-theme', cur?(cur==='dark'?'light':'dark'):(sd?'light':'dark')); renderCharts(); };
   let rt; addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(renderCharts,150);});
-
   render();
 </script>
