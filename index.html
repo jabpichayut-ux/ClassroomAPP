@@ -145,6 +145,8 @@
   .fund p{margin:0; font-size:12.8px; color:var(--muted); line-height:1.5}
   .fund .hold{display:flex; flex-wrap:wrap; gap:6px}
   .chip{font-size:11px; background:var(--surface-2); border:1px solid var(--line); border-radius:2px; padding:2px 9px; color:var(--muted)}
+  .fnow{font-size:12px; color:var(--muted); line-height:1.45; border-top:1px dashed var(--line-strong); padding-top:8px; margin-top:2px}
+  .fnow span{color:var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:.05em; font-size:10px; margin-right:5px}
 
   .talk{display:grid; gap:12px; grid-template-columns:repeat(3,1fr)}
   @media(max-width:760px){.talk{grid-template-columns:1fr}}
@@ -224,7 +226,7 @@
 
   <section id="spotlight">
     <div class="spotlight">
-      <div class="sechead" style="border-bottom-color:var(--accent)"><span class="badge" id="b-sell"></span><h2 style="margin-left:4px" id="s-funds"></h2><span class="hint">UOB Asset Management</span></div>
+      <div class="sechead" style="border-bottom-color:var(--accent)"><span class="badge" id="b-sell"></span><h2 style="margin-left:4px" id="s-funds"></h2><span class="hint" id="h-funds"></span></div>
       <h3 class="subhead" id="sh-off"></h3>
       <div class="grid g2" style="margin-bottom:18px" id="offgrid"></div>
       <div class="rule"></div>
@@ -277,6 +279,7 @@
     pricenote:{en:"A trend line is drawn where two or more real closing prices are available; a single dot means only the latest close was found for that update.", th:"เส้นกราฟจะวาดเมื่อมีราคาปิดจริงตั้งแต่ 2 จุดขึ้นไป จุดเดียวหมายถึงพบเพียงราคาปิดล่าสุดในรอบนั้น"},
     bSell:{en:"Your sell list", th:"รายการขายของคุณ"},
     sFunds:{en:"UOB funds — offshore & onshore", th:"กองทุน UOB — ต่างประเทศและในประเทศ"},
+    hFunds:{en:"UOB only · selection reviewed hourly to fit the market", th:"เฉพาะ UOB · ทบทวนรายการทุกชั่วโมงให้เข้ากับตลาด"},
     shOff:{en:'Offshore funds', th:'กองทุนต่างประเทศ (Offshore)'}, shOffSub:{en:"registered abroad · for clients with a USD/EUR foreign-investment account", th:"จดทะเบียนต่างประเทศ · สำหรับลูกค้าที่มีบัญชีลงทุนต่างประเทศ USD/EUR"},
     shOn:{en:'Onshore funds', th:'กองทุนในประเทศ (Onshore)'}, shOnSub:{en:"buy in Thai baht (THB) · invest globally · easiest for most clients", th:"ซื้อเป็นเงินบาท · ลงทุนทั่วโลก · ง่ายที่สุดสำหรับลูกค้าส่วนใหญ่"},
     sTalk:{en:"How to use this with clients today", th:"วิธีใช้ข้อมูลนี้กับลูกค้าวันนี้"},
@@ -370,14 +373,16 @@
   ];
 
   const OFFSHORE=[
-    {code:"United Asian Bond Fund", name:{en:"UOBAM · Asian USD investment-grade bonds",th:"UOBAM · พันธบัตรเอเชียเกรดลงทุนสกุล USD"}, rk:{en:"Bond · income",th:"ตราสารหนี้ · รายได้"}, desc:{en:"Stable income + capital appreciation from Asian government & corporate debt, in USD. Your core defensive offshore pick for bond clients.",th:"รายได้สม่ำเสมอ + โอกาสเติบโตของทุน จากพันธบัตรรัฐบาลและหุ้นกู้เอเชียสกุล USD ตัวเลือกตั้งรับหลักสำหรับลูกค้าตราสารหนี้"}, hold:["Asia USD IG","Diversified","USD"]},
-    {code:"United Asian High Yield Bond", name:{en:"UOBAM · Asian high-yield bonds",th:"UOBAM · หุ้นกู้ผลตอบแทนสูงเอเชีย"}, rk:{en:"Higher income",th:"รายได้สูงขึ้น"}, desc:{en:"Higher coupons from Asian high-yield issuers — for yield-hungry clients who accept more credit risk.",th:"คูปองสูงจากผู้ออกหุ้นกู้ผลตอบแทนสูงในเอเชีย — สำหรับลูกค้าที่ต้องการผลตอบแทนสูงและรับความเสี่ยงเครดิตได้มากขึ้น"}, hold:["Asia HY","Higher coupon","USD"]},
+    {code:"UGIS-USD", name:{en:"UOBAM · USD global income strategic bond",th:"UOBAM · กองทุนตราสารหนี้ทั่วโลก สกุล USD"}, rk:{en:"Bond · income · USD",th:"ตราสารหนี้ · รายได้ · USD"}, desc:{en:"Global diversified bond income in US dollars, from Thailand's #1 USD fund house (~72% USD market share). Your core offshore income pick.",th:"รายได้จากตราสารหนี้ทั่วโลกแบบกระจาย สกุลดอลลาร์ จากผู้นำกองทุน USD อันดับ 1 ของไทย (ส่วนแบ่ง ~72%) ตัวเลือกรายได้หลักของพอร์ตต่างประเทศ"}, now:{en:"Lock high yields before the Fed starts cutting — bonds win as rates peak.",th:"ล็อกผลตอบแทนสูงก่อนเฟดเริ่มลดดอกเบี้ย — ตราสารหนี้ได้เปรียบเมื่อดอกเบี้ยถึงจุดสูงสุด"}, hold:["Global bonds","USD","Income"]},
+    {code:"United Asian Bond Fund", name:{en:"UOBAM · Asian USD investment-grade bonds",th:"UOBAM · พันธบัตรเอเชียเกรดลงทุน สกุล USD"}, rk:{en:"Bond · defensive",th:"ตราสารหนี้ · ตั้งรับ"}, desc:{en:"Investment-grade Asian government & corporate debt in USD — the steadier, defensive offshore ballast.",th:"พันธบัตรรัฐบาลและหุ้นกู้เอเชียเกรดลงทุน สกุล USD ตัวถ่วงพอร์ตแบบตั้งรับที่นิ่งกว่า"}, now:{en:"Defensive ballast for cautious clients while equities sit at records.",th:"ตัวถ่วงตั้งรับสำหรับลูกค้าที่ระมัดระวัง ขณะหุ้นอยู่ที่จุดสูงสุด"}, hold:["Asia USD IG","Diversified","USD"]},
+    {code:"UUSTECH-USD", name:{en:"UOBAM · USD US technology equity",th:"UOBAM · หุ้นเทคโนโลยีสหรัฐ สกุล USD"}, rk:{en:"US tech · USD · high risk",th:"หุ้นเทคสหรัฐ · USD · เสี่ยงสูง"}, desc:{en:"US technology & semiconductor leaders in US dollars — the AI growth engine, offshore.",th:"ผู้นำเทคโนโลยีและเซมิคอนดักเตอร์สหรัฐ สกุลดอลลาร์ — เครื่องยนต์การเติบโต AI แบบต่างประเทศ"}, now:{en:"Tech is leading the record-high, risk-on rally.",th:"หุ้นเทคนำตลาดทำสถิติสูงสุดในบรรยากาศเข้าซื้อสินทรัพย์เสี่ยง"}, hold:["US tech","Semis","AI"]},
+    {code:"UGOLD-USD", name:{en:"UOBAM · USD gold fund",th:"UOBAM · กองทุนทองคำ สกุล USD"}, rk:{en:"Gold · USD · alternative",th:"ทองคำ · USD · ทางเลือก"}, desc:{en:"Tracks the gold price in US dollars — a hedge and diversifier (currently in a fee-waiver promotion).",th:"อิงราคาทองคำ สกุลดอลลาร์ — ตัวป้องกันความเสี่ยงและกระจายพอร์ต (มีโปรโมชันยกเว้นค่าธรรมเนียม)"}, now:{en:"Gold near a two-month high as rate-hike fears fade.",th:"ทองใกล้จุดสูงสุดรอบสองเดือน ขณะความกลัวขึ้นดอกเบี้ยจางลง"}, hold:["Gold","Safe-haven","USD"]},
   ];
   const ONSHORE=[
-    {code:"UGIS", name:{en:"United Global Income Strategic Bond",th:"United Global Income Strategic Bond"}, rk:{en:"Bond · income",th:"ตราสารหนี้ · รายได้"}, desc:{en:"Global diversified bond income in one Thai-registered fund. The easy THB way to give clients offshore bond exposure.",th:"รายได้จากตราสารหนี้ทั่วโลกแบบกระจายในกองทุนจดทะเบียนไทยกองเดียว วิธีง่าย ๆ ให้ลูกค้าลงทุนตราสารหนี้ต่างประเทศด้วยเงินบาท"}, hold:["Global bonds","Income","THB"]},
-    {code:"UUSTECH", name:{en:"United US Technology Fund",th:"United US Technology Fund"}, rk:{en:"US tech · high risk",th:"หุ้นเทคสหรัฐ · เสี่ยงสูง"}, desc:{en:"US technology & semiconductor leaders — the AI / chip growth theme, bought in baht.",th:"ผู้นำเทคโนโลยีและเซมิคอนดักเตอร์สหรัฐ — ธีมการเติบโต AI / ชิป ซื้อได้ด้วยเงินบาท"}, hold:["US tech","Semis","AI"]},
-    {code:"UGQG", name:{en:"United Global Quality Growth",th:"United Global Quality Growth"}, rk:{en:"Global equity",th:"หุ้นทั่วโลก"}, desc:{en:"High-quality global growth companies. A steadier core-equity sleeve than a pure-tech play.",th:"บริษัทเติบโตคุณภาพสูงทั่วโลก แกนหุ้นที่นิ่งกว่ากองเทคล้วน"}, hold:["Global quality","Growth"]},
-    {code:"UOBSG", name:{en:"UOB Smart Gold",th:"UOB Smart Gold"}, rk:{en:"Gold · alternative",th:"ทองคำ · ทางเลือก"}, desc:{en:"Tracks the gold price — timely with gold at a two-month high. A diversifier and safe-haven talking point.",th:"อิงราคาทองคำ — เหมาะจังหวะที่ทองทำจุดสูงสุดรอบ 2 เดือน เป็นตัวกระจายความเสี่ยงและจุดคุยเรื่องสินทรัพย์ปลอดภัย"}, hold:["Gold","Safe-haven","Diversifier"]},
+    {code:"UGIS", name:{en:"United Global Income Strategic Bond",th:"United Global Income Strategic Bond"}, rk:{en:"Bond · income",th:"ตราสารหนี้ · รายได้"}, desc:{en:"Global diversified bond income in one Thai-registered fund. The easy THB way to give clients offshore bond exposure.",th:"รายได้จากตราสารหนี้ทั่วโลกแบบกระจายในกองทุนจดทะเบียนไทยกองเดียว วิธีง่าย ๆ ให้ลูกค้าลงทุนตราสารหนี้ต่างประเทศด้วยเงินบาท"}, now:{en:"Rates are peaking — lock global bond income now, in baht.",th:"ดอกเบี้ยใกล้จุดสูงสุด — ล็อกรายได้ตราสารหนี้ทั่วโลกตอนนี้ ด้วยเงินบาท"}, hold:["Global bonds","Income","THB"]},
+    {code:"UUSTECH", name:{en:"United US Technology Fund",th:"United US Technology Fund"}, rk:{en:"US tech · high risk",th:"หุ้นเทคสหรัฐ · เสี่ยงสูง"}, desc:{en:"US technology & semiconductor leaders — the AI / chip growth theme, bought in baht.",th:"ผู้นำเทคโนโลยีและเซมิคอนดักเตอร์สหรัฐ — ธีมการเติบโต AI / ชิป ซื้อได้ด้วยเงินบาท"}, now:{en:"AI-chip demand and record highs make tech the momentum play.",th:"ดีมานด์ชิป AI และจุดสูงสุดใหม่ ทำให้เทคเป็นหุ้นโมเมนตัม"}, hold:["US tech","Semis","AI"]},
+    {code:"UGQG", name:{en:"United Global Quality Growth",th:"United Global Quality Growth"}, rk:{en:"Global equity",th:"หุ้นทั่วโลก"}, desc:{en:"High-quality global growth companies. A steadier core-equity sleeve than a pure-tech play.",th:"บริษัทเติบโตคุณภาพสูงทั่วโลก แกนหุ้นที่นิ่งกว่ากองเทคล้วน"}, now:{en:"A steadier way to hold the rally — quality global growth.",th:"วิธีถือครองการปรับขึ้นที่นิ่งกว่า — หุ้นเติบโตคุณภาพทั่วโลก"}, hold:["Global quality","Growth"]},
+    {code:"UOBSG", name:{en:"UOB Smart Gold",th:"UOB Smart Gold"}, rk:{en:"Gold · alternative",th:"ทองคำ · ทางเลือก"}, desc:{en:"Tracks the gold price — timely with gold at a two-month high. A diversifier and safe-haven talking point.",th:"อิงราคาทองคำ — เหมาะจังหวะที่ทองทำจุดสูงสุดรอบ 2 เดือน เป็นตัวกระจายความเสี่ยงและจุดคุยเรื่องสินทรัพย์ปลอดภัย"}, now:{en:"Gold near two-month highs — a hedge if volatility returns.",th:"ทองใกล้จุดสูงสุดรอบสองเดือน — ตัวป้องกันหากความผันผวนกลับมา"}, hold:["Gold","Safe-haven","Diversifier"]},
   ];
 
   const TALK=[
@@ -444,7 +449,7 @@
     $('s-brief').textContent=t(S.sBrief); $('h-brief').textContent=t(S.hBrief); $('leadtag').textContent=t(S.leadtag); $('leadtxt').innerHTML=t(S.leadtxt);
     $('s-themes').textContent=t(S.sThemes); $('s-watch').textContent=t(S.sWatch); $('h-watch').textContent=t(S.hWatch); $('watchnote').innerHTML=t(S.watchnote);
     $('s-prices').textContent=t(S.sPrices); $('h-prices').textContent=t(S.hPrices); $('pricenote').textContent=t(S.pricenote);
-    $('b-sell').textContent=t(S.bSell); $('s-funds').textContent=t(S.sFunds);
+    $('b-sell').textContent=t(S.bSell); $('s-funds').textContent=t(S.sFunds); $('h-funds').textContent=t(S.hFunds);
     $('sh-off').innerHTML=`${t(S.shOff)} <small>${t(S.shOffSub)}</small>`; $('sh-on').innerHTML=`${t(S.shOn)} <small>${t(S.shOnSub)}</small>`;
     $('s-talk').textContent=t(S.sTalk); $('f-src').textContent=t(S.fSrc); $('disc').innerHTML=t(S.disc); $('f-foot').textContent=t(S.foot);
 
@@ -467,7 +472,7 @@
     const pg=(title,rows)=>`<div class="pgroup-h">${title}</div>`+rows.map(r=>`<div class="prow"><div class="tk"><b>${r.tk}</b><small>${t(r.sub)}</small></div><div class="spark">${spark(r.series,r.chg)}</div><div class="px num">${r.px}</div><div class="meta">${chgPill(r.chg)}<br>${L==='th'?'ณ':'as of'} ${r.asof}</div></div>`).join('');
     $('priceboard').innerHTML=pg(L==='th'?'เทคโนโลยี':'Technology',TECH)+pg(L==='th'?'การเงิน':'Financials',FIN)+pg(L==='th'?'สุขภาพ':'Healthcare',HEALTH)+pg(L==='th'?'พันธบัตรสหรัฐ ทองคำ น้ำมัน':'US Treasuries, gold & oil',RATES);
 
-    const fh=f=>`<div class="fund"><div class="top"><div class="code">${f.code}<small>${t(f.name)}</small></div><span class="rk">${t(f.rk)}</span></div><p>${t(f.desc)}</p><div class="hold">${f.hold.map(h=>`<span class="chip">${h}</span>`).join('')}</div></div>`;
+    const fh=f=>`<div class="fund"><div class="top"><div class="code">${f.code}<small>${t(f.name)}</small></div><span class="rk">${t(f.rk)}</span></div><p>${t(f.desc)}</p>${f.now?`<div class="fnow"><span>${L==='th'?'ทำไมตอนนี้':'Why now'}</span>${t(f.now)}</div>`:''}<div class="hold">${f.hold.map(h=>`<span class="chip">${h}</span>`).join('')}</div></div>`;
     $('offgrid').innerHTML=OFFSHORE.map(fh).join(''); $('ongrid').innerHTML=ONSHORE.map(fh).join('');
     $('talkgrid').innerHTML=TALK.map(c=>`<div class="card"><h3>${t(c.h)}</h3><ol>${t(c.li).map(x=>`<li>${x}</li>`).join('')}</ol></div>`).join('');
 
