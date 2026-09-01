@@ -133,6 +133,11 @@
   .prow .spark{display:flex; justify-content:center}
   .prow .meta{text-align:right; font-size:11.5px; color:var(--faint)}
   @media(max-width:620px){.prow{grid-template-columns:1.4fr 70px 1fr}.prow .meta{display:none}}
+  .prow.slim{grid-template-columns:1.7fr 1fr auto 100px}
+  @media(max-width:620px){.prow.slim{grid-template-columns:1.5fr 1fr auto}.prow.slim .meta{display:none}}
+  .newscard h3{font-family:var(--serif); font-size:16px; margin-bottom:10px}
+  .newslist{margin:0; padding-left:16px; font-size:13px; color:var(--muted); line-height:1.5}
+  .newslist li{margin:8px 0} .newslist li b{color:var(--ink); font-weight:700}
 
   .spotlight{background:var(--surface-2); border:1px solid var(--line); border-top:4px solid var(--accent); border-radius:4px; padding:22px; box-shadow:var(--shadow)}
   .badge{background:var(--accent); color:#fff; font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; padding:3px 9px; border-radius:2px}
@@ -205,11 +210,16 @@
   <section id="brief">
     <div class="sechead"><h2 id="s-brief"></h2><span class="hint" id="h-brief"></span></div>
     <div class="lead"><span class="tag" id="leadtag"></span><p id="leadtxt"></p></div>
-    <div class="grid g2" id="countrygrid"></div>
-    <div class="grid g2" style="margin-top:14px" id="extragrid"></div>
-    <div class="rule"></div>
-    <div class="sechead"><h2 id="s-themes"></h2></div>
-    <div class="grid g4" id="themegrid"></div>
+  </section>
+
+  <section id="news">
+    <div class="sechead"><h2 id="s-news"></h2><span class="hint" id="h-news"></span></div>
+    <div class="grid g2" id="newsgrid"></div>
+  </section>
+
+  <section id="indices">
+    <div class="sechead"><h2 id="s-indices"></h2><span class="hint" id="h-indices"></span></div>
+    <div class="prices" id="indexboard"></div>
   </section>
 
   <section id="watch">
@@ -270,6 +280,9 @@
     leadtag:{en:"Bottom line", th:"สรุปสั้น"},
     leadtxt:{en:`<b>Markets have now fully repriced the weekend's Iran escalation, and it isn't a one-day story: Wall Street fell Monday (S&P 500 −0.33% to 7,686.14) after Trump threatened Iran with further attacks, oil extended its jump to more than 3% intraday, and the 10-year Treasury yield broke above 4.75% — its highest since January 2025.</b> September rate-hike odds jumped again to 66% (from ~56% Friday) per CME FedWatch, while gold extended Friday's slide to below $4,450/oz. Asia and Europe closed mixed Monday (Shanghai +0.86%, SET +0.44%; DAX −0.6%, Nikkei −0.14%, Hang Seng −0.07%), showing the damage is concentrated in the US rate-sensitive names rather than broad risk-off. For your clients: with a Fed hike now odds-on and oil-driven inflation risk compounding it, <b>locking in today's still-elevated bond coupons</b> is even more time-sensitive than it was Friday, while gold's second straight down session — against a backdrop of live Mideast escalation — keeps looking more like an entry point than a value trap.`, th:`<b>ตลาดตอนนี้สะท้อนเหตุการณ์อิหร่านช่วงสุดสัปดาห์เต็มที่แล้ว และไม่ใช่แค่เรื่องวันเดียว: วอลล์สตรีทปรับลงวันจันทร์ (S&P 500 ลดลง 0.33% สู่ 7,686.14) หลังทรัมป์ขู่โจมตีอิหร่านเพิ่มเติม น้ำมันขยับขึ้นต่อกว่า 3% ระหว่างวัน และผลตอบแทนพันธบัตร 10 ปีทะลุ 4.75% สูงสุดตั้งแต่เดือน ม.ค. 2025</b> โอกาสขึ้นดอกเบี้ยเดือน ก.ย. พุ่งขึ้นอีกครั้งสู่ 66% (จากราว 56% วันศุกร์) ตามข้อมูล CME FedWatch ขณะทองคำร่วงต่อจากวันศุกร์ ลงต่ำกว่า $4,450 ต่อออนซ์ เอเชียและยุโรปปิดตลาดวันจันทร์แบบผสม (Shanghai เพิ่มขึ้น 0.86%, SET เพิ่มขึ้น 0.44%; DAX ลดลง 0.6%, Nikkei ลดลง 0.14%, Hang Seng ลดลง 0.07%) แสดงว่าความเสียหายกระจุกตัวอยู่ที่หุ้นสหรัฐฯ กลุ่มอ่อนไหวต่อดอกเบี้ย มากกว่าเป็นการเทขายเสี่ยงทั่วโลก สำหรับลูกค้าของคุณ: เมื่อการขึ้นดอกเบี้ยของเฟดเกือบจะแน่นอนแล้ว บวกกับความเสี่ยงเงินเฟ้อจากน้ำมันที่ซ้อนทับเข้ามา <b>การล็อกคูปองพันธบัตรที่ยังสูงอยู่วันนี้</b> ยิ่งเร่งด่วนกว่าวันศุกร์ ขณะทองคำที่ร่วงต่อเนื่องเป็นวันที่สอง ท่ามกลางความตึงเครียดตะวันออกกลางที่ยังคุกรุ่นอยู่ ก็ยิ่งดูเหมือนจังหวะเข้าซื้อมากกว่ากับดักราคาถูก`},
     sThemes:{en:"Themes on your watch-list", th:"ประเด็นที่ต้องจับตา"},
+    sNews:{en:"Macro & micro news", th:"ข่าวมหภาคและจุลภาค"}, hNews:{en:"Short, analytical · up to date", th:"สั้น วิเคราะห์ · อัปเดตล่าสุด"},
+    macroH:{en:"Macro — the big picture", th:"มหภาค — ภาพใหญ่"}, microH:{en:"Micro — companies & stocks", th:"จุลภาค — บริษัทและหุ้น"},
+    sIndices:{en:"Global indices", th:"ดัชนีหุ้นทั่วโลก"}, hIndices:{en:"Price, change & date · no charts", th:"ราคา การเปลี่ยนแปลง และวันที่ · ไม่มีกราฟ"},
     sWatch:{en:"What to watch this week", th:"สิ่งที่ต้องจับตาสัปดาห์นี้"},
     hWatch:{en:"The 3 biggest for the global economy · US data · ET", th:"3 เรื่องใหญ่ที่สุดต่อเศรษฐกิจโลก · ข้อมูลสหรัฐ · เวลาสหรัฐ"},
     watchnote:{en:`Rate-hike odds keep climbing even before the data arrives. Next up is the <b style="color:var(--muted)">August jobs report on Sep 4</b>, which will move September rate-hike odds (now 66%) further ahead of the Fed's Sep 16 decision.`,
@@ -337,7 +350,28 @@
     {h:{en:"Inflation",th:"เงินเฟ้อ"}, p:{en:`Oil's renewed surge — up more than 3% intraday Monday on Trump's Iran threat — adds a fresh, independent inflation risk on top of Fed Chair Warsh's warning Friday that recent PCE and CPI readings <b>"do not tell me that underlying trends have meaningfully improved."</b> Two separate inflation drivers, energy and "underlying" price pressure, are now pointing the same direction at once.`, th:`น้ำมันที่พุ่งขึ้นอีกระลอก — เพิ่มขึ้นกว่า 3% ระหว่างวันจันทร์จากการขู่อิหร่านของทรัมป์ — เพิ่มความเสี่ยงเงินเฟ้อใหม่ที่เป็นอิสระต่อกัน ซ้อนทับคำเตือนของประธานเฟดวอร์ชเมื่อวันศุกร์ที่ว่าตัวเลข PCE และ CPI ล่าสุด <b>"ไม่ได้บอกผมว่าแนวโน้มพื้นฐานดีขึ้นอย่างมีนัยสำคัญ"</b> ตอนนี้ปัจจัยเงินเฟ้อสองด้านที่แยกจากกัน คือพลังงานและแรงกดดันราคา "พื้นฐาน" กำลังชี้ไปทิศทางเดียวกันพร้อมกัน`}, w:{en:`When an energy shock and a hawkish Fed chair are both flagging inflation risk in the same week, that's the clearest "don't get complacent on rates" talking point so far this year — pair any growth-fund conversation with a reminder that the bond case hasn't weakened, it's gotten measurably stronger.`, th:`เมื่อแรงกระแทกจากพลังงานและประธานเฟดที่ส่งสัญญาณเหยี่ยวต่างชี้ความเสี่ยงเงินเฟ้อในสัปดาห์เดียวกัน นี่คือประเด็นที่ชัดเจนที่สุดให้ "อย่าประมาทเรื่องดอกเบี้ย" ของปีนี้จนถึงตอนนี้ — เมื่อคุยเรื่องกองทุนเติบโตกับลูกค้า ควรย้ำด้วยว่าเหตุผลด้านตราสารหนี้ไม่ได้อ่อนลง แต่แข็งแกร่งขึ้นอย่างชัดเจน`}},
   ];
 
-      const WATCH=[
+      const NEWS={
+    macro:[
+      {h:{en:"US–Iran war reignites",th:"สงครามสหรัฐ–อิหร่านปะทุอีก"}, d:{en:"Iran fired missiles at US positions in Jordan after a US strike on Larak Island; oil jumped ~2%. Risk-off, safe-havens bid.",th:"อิหร่านยิงขีปนาวุธใส่ฐานทัพสหรัฐในจอร์แดน หลังสหรัฐโจมตีเกาะลารัค น้ำมัน +2% ตลาดปิดรับความเสี่ยง เข้าซื้อสินทรัพย์ปลอดภัย"}},
+      {h:{en:"Fed turns hawkish",th:"เฟดเปลี่ยนเป็นสายเหยี่ยว"}, d:{en:"New chair Warsh flagged inflation worry — markets now price a possible September hike. Bad for stocks, good for new bond buyers.",th:"วอร์ช ประธานคนใหม่ กังวลเงินเฟ้อ ตลาดเริ่มมองเฟดอาจขึ้นดอกเบี้ย ก.ย. ลบต่อหุ้น แต่บวกต่อผู้ซื้อพันธบัตรใหม่"}},
+      {h:{en:"Yields at a 20-month high",th:"ผลตอบแทนสูงสุดรอบ 20 เดือน"}, d:{en:"The US 10-year hit its highest since Jan 2025 on oil-driven inflation fears — a lock-in window for income.",th:"พันธบัตรสหรัฐ 10 ปีสูงสุดตั้งแต่ ม.ค. 2025 จากความกังวลเงินเฟ้อที่มาจากน้ำมัน — จังหวะล็อกรายได้"}},
+      {h:{en:"Jobs report Friday",th:"ตัวเลขจ้างงานศุกร์นี้"}, d:{en:"August payrolls could swing the Fed decision; a hot number raises hike odds.",th:"การจ้างงานเดือน ส.ค. อาจสวิงการตัดสินใจเฟด ตัวเลขแรงจะเพิ่มโอกาสขึ้นดอกเบี้ย"}},
+    ],
+    micro:[
+      {h:{en:"Chips sell off to start September",th:"หุ้นชิปเทขายต้นเดือน ก.ย."}, d:{en:"VanEck Semi ETF (SMH) −2.3%; Nvidia −1.8%, Micron −1.8% on heavy volume — profit-taking, not a demand change.",th:"ETF เซมิคอนดักเตอร์ (SMH) −2.3%; Nvidia −1.8%, Micron −1.8% ปริมาณหนาแน่น — ทำกำไร ไม่ใช่ดีมานด์เปลี่ยน"}},
+      {h:{en:"Nvidia's long game intact",th:"เกมระยะยาว Nvidia ยังอยู่"}, d:{en:"After a blowout quarter the CFO guided ~70% revenue growth for FY2028 — supports the AI theme (UUSTECH).",th:"หลังกำไรทะลุคาด ซีเอฟโอชี้รายได้โตราว 70% ปีงบ 2028 — หนุนธีม AI (UUSTECH)"}},
+      {h:{en:"Broadcom reports Sept 2",th:"Broadcom รายงานผล 2 ก.ย."}, d:{en:"Fiscal Q3 after the close — the next big AI-hardware read; watch the guidance.",th:"งบไตรมาส 3 หลังปิดตลาด — ตัวเลขสำคัญถัดไปของกลุ่มฮาร์ดแวร์ AI จับตาแนวโน้ม"}},
+      {h:{en:"Healthcare holds up",th:"กลุ่มสุขภาพยืนได้"}, d:{en:"Medtronic beat on Q1 (EPS ~$1.39) — defensive names steady while tech wobbles.",th:"Medtronic กำไรไตรมาส 1 ดีกว่าคาด (EPS ~$1.39) — หุ้นตั้งรับยืนได้ขณะเทคผันผวน"}},
+    ],
+  };
+  const INDEXES=[
+    {flag:"🇺🇸", tk:"S&P 500", rg:{en:"United States",th:"สหรัฐฯ"}, val:"7,686.14", chg:-0.33, asof:"31 Aug"},
+    {flag:"🇪🇺", tk:"DAX", rg:{en:"Germany",th:"เยอรมนี"}, val:"26,020", chg:-0.90, asof:"1 Sep"},
+    {flag:"🌏", tk:"Nikkei 225", rg:{en:"Japan",th:"ญี่ปุ่น"}, val:"66,215.34", chg:-0.15, asof:"1 Sep"},
+    {flag:"🇨🇳", tk:"Hang Seng", rg:{en:"Hong Kong",th:"ฮ่องกง"}, val:"25,329", chg:-0.90, asof:"1 Sep"},
+    {flag:"🇹🇭", tk:"SET Index", rg:{en:"Thailand",th:"ไทย"}, val:"1,601.05", chg:-0.79, asof:"recent"},
+  ];
+  const WATCH=[
     {day:{en:"Done",th:"แล้ว"}, date:{en:"Mon",th:"จันทร์"}, imp:"h", t:{en:"Trump threatens more Iran strikes; 10Y yield tops 4.75%, hike odds hit 66%",th:"ทรัมป์ขู่โจมตีอิหร่านเพิ่ม พันธบัตร 10 ปีทะลุ 4.75% โอกาสขึ้นดอกเบี้ยแตะ 66%"}, d:{en:"Oil jumped over 3% intraday (Brent $90.69, WTI above $86) on the president's threat, pushing the 10-year Treasury yield above 4.75% for the first time since Jan 2025. US stocks fell (S&P −0.33%, Dow −0.7%); gold extended its slide below $4,450/oz.",th:"น้ำมันพุ่งขึ้นกว่า 3% ระหว่างวัน (เบรนท์ $90.69, WTI เหนือ $86) จากการขู่ของประธานาธิบดี ดันผลตอบแทนพันธบัตร 10 ปีทะลุ 4.75% เป็นครั้งแรกนับตั้งแต่ ม.ค. 2025 หุ้นสหรัฐฯ ปรับลง (S&P ลดลง 0.33%, Dow ลดลง 0.7%) ทองคำร่วงต่อลงต่ำกว่า $4,450 ต่อออนซ์"}},
     {day:{en:"Done",th:"แล้ว"}, date:{en:"Sun",th:"อาทิตย์"}, imp:"h", t:{en:"US strikes Iranian rocket/mine launchers near Strait of Hormuz",th:"สหรัฐฯ โจมตีฐานยิงจรวด/ทุ่นระเบิดอิหร่านใกล้ช่องแคบฮอร์มุซ"}, d:{en:"First acknowledged US military action in weeks, after the IRGC prepared rockets carrying sea mines aimed at Hormuz shipping. Iran vowed retaliation and struck US bases in Jordan (mostly intercepted); Brent jumped ~2% Monday to above $90/bbl.",th:"ปฏิบัติการทางทหารของสหรัฐฯ ที่ยอมรับอย่างเป็นทางการครั้งแรกในรอบหลายสัปดาห์ หลัง IRGC เตรียมยิงจรวดติดทุ่นระเบิดใส่เรือขนส่งในฮอร์มุซ อิหร่านขู่ตอบโต้และโจมตีฐานทัพสหรัฐฯ ในจอร์แดน (ถูกสกัดกั้นได้ส่วนใหญ่) เบรนท์พุ่งขึ้นราว 2% วันจันทร์ สู่เหนือ $90 ต่อบาร์เรล"}},
     {day:{en:"Done",th:"แล้ว"}, date:{en:"Fri",th:"ศุกร์"}, imp:"h", t:{en:"Jackson Hole — Warsh's first speech as Fed chair turned hawkish",th:"Jackson Hole — วอร์ชแถลงครั้งแรกในฐานะประธานเฟด ส่งสัญญาณเหยี่ยว"}, d:{en:"Warsh said inflation's \"underlying trends\" haven't meaningfully improved and the Fed \"has more work to do.\" September rate-hike odds jumped to ~56% from ~35%, gold sank over 3%, and the 2-year yield jumped to ~4.30%.",th:"วอร์ชระบุว่า \"แนวโน้มพื้นฐาน\" ของเงินเฟ้อยังไม่ดีขึ้นอย่างมีนัยสำคัญ และเฟด \"ยังมีงานต้องทำอีกมาก\" โอกาสขึ้นดอกเบี้ยเดือน ก.ย. พุ่งสู่ราว 56% จากราว 35% ทองคำร่วงกว่า 3% และผลตอบแทนพันธบัตร 2 ปีพุ่งสู่ราว 4.30%"}},
@@ -447,26 +481,16 @@
     $('db-ed').innerHTML=`${t(S.dbEd)}: <b>${new Date().toLocaleDateString(L==='th'?'th-TH':'en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</b>`;
     $('db-cov').innerHTML=`${t(S.dbCov)} <b>${t(S.dbCovVal)}</b>`; $('db-next').innerHTML=`${t(S.dbNext)}: <b>${t(S.dbNextVal)}</b>`;
     $('s-brief').textContent=t(S.sBrief); $('h-brief').textContent=t(S.hBrief); $('leadtag').textContent=t(S.leadtag); $('leadtxt').innerHTML=t(S.leadtxt);
-    $('s-themes').textContent=t(S.sThemes); $('s-watch').textContent=t(S.sWatch); $('h-watch').textContent=t(S.hWatch); $('watchnote').innerHTML=t(S.watchnote);
+    $('s-news').textContent=t(S.sNews); $('h-news').textContent=t(S.hNews); $('s-indices').textContent=t(S.sIndices); $('h-indices').textContent=t(S.hIndices); $('s-watch').textContent=t(S.sWatch); $('h-watch').textContent=t(S.hWatch); $('watchnote').innerHTML=t(S.watchnote);
     $('s-prices').textContent=t(S.sPrices); $('h-prices').textContent=t(S.hPrices); $('pricenote').textContent=t(S.pricenote);
     $('b-sell').textContent=t(S.bSell); $('s-funds').textContent=t(S.sFunds); $('h-funds').textContent=t(S.hFunds);
     $('sh-off').innerHTML=`${t(S.shOff)} <small>${t(S.shOffSub)}</small>`; $('sh-on').innerHTML=`${t(S.shOn)} <small>${t(S.shOnSub)}</small>`;
     $('s-talk').textContent=t(S.sTalk); $('f-src').textContent=t(S.fSrc); $('disc').innerHTML=t(S.disc); $('f-foot').textContent=t(S.foot);
 
-    $('countrygrid').innerHTML=COUNTRIES.map((c,i)=>`
-      <div class="card ccard">
-        <div class="chdr"><div class="ci"><h3 style="margin:0"><span class="flag">${c.flag}</span> ${t(c.name)}</h3><span class="ix">${c.ix}</span></div>
-          <div style="text-align:right"><div class="val">${c.val}</div>${chgPill(c.chg)}</div></div>
-        <div class="chartbox" data-series='${JSON.stringify(c.series)}' data-chg="${c.chg}"></div>
-        <div class="chartcap">${t(S.recent)}</div>
-        <p>${t(c.txt)}</p>
-        <div class="why"><span>${t(S.foryou)}</span> ${t(c.why)}</div>
-        <button class="expand">${t(S.readfull)} <span class="cv">▾</span></button>
-        <div class="full" hidden><p style="margin:0">${t(c.full)}</p>
-          <div class="srcline"><span class="srclabel">${t(S.sources)}</span>${c.sources.map(s=>`<a class="srcpill" href="${s.u}" target="_blank" rel="noopener">${s.l} ↗</a>`).join('')}</div></div>
-      </div>`).join('');
-    $('extragrid').innerHTML=EXTRA.map(e=>`<div class="card"><h3><span class="flag">${e.flag}</span> ${t(e.h)}</h3><p>${t(e.txt)}</p><div class="why"><span>${t(S.foryou)}</span> ${t(e.why)}</div></div>`).join('');
-    $('themegrid').innerHTML=THEMES.map(x=>`<div class="card themecard"><h3>${t(x.h)}</h3><p>${t(x.p)}</p><div class="why"><span>${t(S.impact)}</span> ${t(x.w)}</div></div>`).join('');
+    $('newsgrid').innerHTML =
+      `<div class="card newscard"><h3>${t(S.macroH)}</h3><ul class="newslist">${NEWS.macro.map(x=>`<li><b>${t(x.h)}</b> — ${t(x.d)}</li>`).join('')}</ul></div>`+
+      `<div class="card newscard"><h3>${t(S.microH)}</h3><ul class="newslist">${NEWS.micro.map(x=>`<li><b>${t(x.h)}</b> — ${t(x.d)}</li>`).join('')}</ul></div>`;
+    $('indexboard').innerHTML=`<div class="pgroup-h">${L==='th'?'ดัชนีหุ้นทั่วโลก':'Global equity indices'}</div>`+INDEXES.map(i=>`<div class="prow slim"><div class="tk"><b><span class="flag">${i.flag}</span> ${i.tk}</b><small>${t(i.rg)}</small></div><div class="px num">${i.val}</div><div>${chgPill(i.chg)}</div><div class="meta">${L==='th'?'ณ':'as of'} ${i.asof}</div></div>`).join('');
     $('watchlist').innerHTML=WATCH.map(w=>`<div class="wrow"><div class="wd"><b>${t(w.day)}</b><small>${t(w.date)}</small></div><div class="wt"><b>${t(w.t)}</b><p>${t(w.d)}</p></div><span class="imp ${w.imp}">${w.imp==='h'?(L==='th'?'สูง':'High'):w.imp==='m'?(L==='th'?'กลาง':'Medium'):(L==='th'?'ต่ำ':'Low')}</span></div>`).join('');
 
     const pg=(title,rows)=>`<div class="pgroup-h">${title}</div>`+rows.map(r=>`<div class="prow"><div class="tk"><b>${r.tk}</b><small>${t(r.sub)}</small></div><div class="spark">${spark(r.series,r.chg)}</div><div class="px num">${r.px}</div><div class="meta">${chgPill(r.chg)}<br>${L==='th'?'ณ':'as of'} ${r.asof}</div></div>`).join('');
