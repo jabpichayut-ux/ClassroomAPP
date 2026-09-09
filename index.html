@@ -228,11 +228,6 @@
     <p style="font-size:12px;color:var(--faint);margin:10px 2px 0" id="watchnote"></p>
   </section>
 
-  <section id="prices">
-    <div class="sechead"><h2 id="s-prices"></h2><span class="hint" id="h-prices"></span></div>
-    <div class="prices" id="priceboard"></div>
-    <p style="font-size:12px;color:var(--faint);margin:10px 2px 0" id="pricenote"></p>
-  </section>
 
 
 
@@ -273,9 +268,6 @@
     hWatch:{en:"The 3 biggest for the global economy · US data · ET", th:"3 เรื่องใหญ่ที่สุดต่อเศรษฐกิจโลก · ข้อมูลสหรัฐ · เวลาสหรัฐ"},
     watchnote:{en:`September hike odds have now risen for three straight sessions — a coin flip Thursday, mid-50s Friday, roughly 60% by Monday — as Asia traded through both that repricing and the Iran-tanker war. <b style="color:var(--muted)">Wall Street reopens Tuesday</b>, the first live US test of both threads ahead of the Fed's Sep 16 decision.`,
       th:`โอกาสขึ้นดอกเบี้ยเดือน ก.ย. ปรับขึ้นต่อเนื่องสามเซสชันแล้ว — ใกล้เคียง 50-50 วันพฤหัสฯ ระดับกลาง 50% กว่าวันศุกร์ และราว 60% ภายในวันจันทร์ — ขณะเอเชียเทรดผ่านทั้งการปรับคาดการณ์นี้และสงครามเรือบรรทุกน้ำมันอิหร่าน <b style="color:var(--muted)">วอลล์สตรีทเปิดตลาดอีกครั้งวันอังคาร</b> เป็นบททดสอบจริงครั้งแรกของสหรัฐฯ ต่อทั้งสองประเด็น ก่อนการตัดสินใจของเฟดวันที่ 16 ก.ย.`},
-    sPrices:{en:"Prices & charts", th:"ราคาและกราฟ"},
-    hPrices:{en:"Snapshot at last update · not live tick-by-tick", th:"ราคา ณ รอบอัปเดตล่าสุด · ไม่ใช่ราคาเรียลไทม์รายวินาที"},
-    pricenote:{en:"A trend line is drawn where two or more real closing prices are available; a single dot means only the latest close was found for that update.", th:"เส้นกราฟจะวาดเมื่อมีราคาปิดจริงตั้งแต่ 2 จุดขึ้นไป จุดเดียวหมายถึงพบเพียงราคาปิดล่าสุดในรอบนั้น"},
     fSrc:{en:"Where this comes from", th:"แหล่งข้อมูล"},
     readfull:{en:"Read the full CNBC / Bloomberg summary", th:"อ่านสรุปเต็มจาก CNBC / Bloomberg"},
     sources:{en:"Sources", th:"แหล่งข่าว"}, foryou:{en:"For you", th:"สำหรับคุณ"}, impact:{en:"Impact", th:"ผลกระทบ"},
@@ -359,35 +351,6 @@
     {day:{en:"Today",th:"วันนี้"}, date:{en:"Tue 8 Sep",th:"อังคาร 8 ก.ย."}, imp:"h", t:{en:"Wall Street reopens for the first time since the tanker war, with hike odds near 60%",th:"วอลล์สตรีทเปิดตลาดอีกครั้งเป็นครั้งแรกหลังสงครามเรือบรรทุกน้ำมัน ขณะโอกาสขึ้นดอกเบี้ยใกล้ 60%"}, d:{en:"US markets reopen Tuesday after the Labor Day break, giving the first direct pricing of both the weekend's Iran-tanker escalation and the climb in September rate-hike odds to roughly 60%. Oil (Brent near $98, WTI above $92) and the elevated 10-year yield (~4.79%) will be the key signals to watch as trading resumes.",th:"ตลาดสหรัฐฯ เปิดทำการอีกครั้งวันอังคารหลังหยุดวันแรงงาน เป็นการสะท้อนราคาโดยตรงครั้งแรกทั้งการทวีความรุนแรงของสงครามเรือบรรทุกน้ำมันอิหร่านช่วงสุดสัปดาห์ และโอกาสขึ้นดอกเบี้ยเดือน ก.ย. ที่ขยับขึ้นสู่ราว 60% ราคาน้ำมัน (เบรนท์ใกล้ $98, WTI เหนือ $92) และผลตอบแทนพันธบัตร 10 ปีที่สูงขึ้น (~4.79%) จะเป็นสัญญาณสำคัญที่ต้องจับตาเมื่อการซื้อขายกลับมาดำเนินต่อ"}},
   ];
 
-  const TECH=[
-    {tk:"NVDA", sub:{en:"Nvidia \u00b7 edged higher to ~$231 Friday, holding most of the week's AI-rally gains despite the hawkish jobs surprise",th:"Nvidia \u00b7 \u0e02\u0e22\u0e31\u0e1a\u0e02\u0e36\u0e49\u0e19\u0e40\u0e25\u0e47\u0e01\u0e19\u0e49\u0e2d\u0e22\u0e2a\u0e39\u0e48\u0e23\u0e32\u0e27 $231 \u0e27\u0e31\u0e19\u0e28\u0e38\u0e01\u0e23\u0e4c \u0e23\u0e31\u0e01\u0e29\u0e32\u0e41\u0e23\u0e07\u0e1a\u0e27\u0e01\u0e2a\u0e48\u0e27\u0e19\u0e43\u0e2b\u0e0d\u0e48\u0e02\u0e2d\u0e07\u0e2a\u0e31\u0e1b\u0e14\u0e32\u0e2b\u0e4c\u0e44\u0e27\u0e49\u0e44\u0e14\u0e49 \u0e41\u0e21\u0e49\u0e08\u0e30\u0e21\u0e35\u0e15\u0e31\u0e27\u0e40\u0e25\u0e02\u0e08\u0e49\u0e32\u0e07\u0e07\u0e32\u0e19\u0e40\u0e0a\u0e34\u0e07\u0e40\u0e2b\u0e22\u0e35\u0e48\u0e22\u0e27"}, px:"$231.11", chg:1.5, series:[227.69,231.11], asof:"4 Sep"},
-    {tk:"MSFT", sub:{en:"Microsoft",th:"Microsoft"}, px:"$487.89", chg:null, series:[487.89], asof:"24 Aug"},
-    {tk:"AAPL", sub:{en:"Apple",th:"Apple"}, px:"$305.06", chg:0.05, series:[304.91,305.06], asof:"11 Aug"},
-    {tk:"GOOGL", sub:{en:"Alphabet",th:"Alphabet"}, px:"$353.47", chg:-0.88, series:[356.61,353.47], asof:"11 Aug"},
-    {tk:"AMZN", sub:{en:"Amazon",th:"Amazon"}, px:"$260.55", chg:-5.08, series:[274.48,260.55], asof:"25 Aug"},
-    {tk:"AVGO", sub:{en:"Broadcom · chips · eased slightly Friday as investors kept digesting this week's softer Q4 revenue guide",th:"Broadcom · ชิป · อ่อนตัวลงเล็กน้อยวันศุกร์ ขณะนักลงทุนยังคงย่อยข่าวแนวโน้มรายได้ไตรมาส 4 ที่อ่อนกว่าคาดของสัปดาห์นี้"}, px:"$355.14", chg:-0.37, series:[356.45,355.14], asof:"4 Sep"},
-  ];
-  const FIN=[
-    {tk:"JPM", sub:{en:"JPMorgan Chase",th:"JPMorgan Chase"}, px:"$359.79", chg:null, series:[359.79], asof:"10 Aug"},
-    {tk:"GS", sub:{en:"Goldman Sachs",th:"Goldman Sachs"}, px:"$1,034.51", chg:null, series:[1034.51], asof:"10 Aug"},
-    {tk:"MA", sub:{en:"Mastercard",th:"Mastercard"}, px:"$561.44", chg:null, series:[561.44], asof:"11 Aug"},
-    {tk:"V", sub:{en:"Visa · intraday range",th:"Visa · ช่วงระหว่างวัน"}, px:"$360–365", chg:null, series:[362], asof:"11 Aug"},
-  ];
-  const HEALTH=[
-    {tk:"LLY", sub:{en:"Eli Lilly · JPM target $1,400",th:"Eli Lilly · เป้า JPM $1,400"}, px:"~$1,149", chg:null, series:[1148.84], asof:"recent"},
-    {tk:"UNH", sub:{en:"UnitedHealth",th:"UnitedHealth"}, px:"$402.19", chg:null, series:[402.19], asof:"11 Aug"},
-    {tk:"JNJ", sub:{en:"Johnson & Johnson",th:"Johnson & Johnson"}, px:"$259.80", chg:-0.77, series:[261.82,259.80], asof:"11 Aug"},
-    {tk:"ABBV", sub:{en:"AbbVie",th:"AbbVie"}, px:"$250.09", chg:0.85, series:[247.98,250.09], asof:"11 Aug"},
-    {tk:"MRK", sub:{en:"Merck",th:"Merck"}, px:"$130.46", chg:null, series:[130.46], asof:"11 Aug"},
-  ];
-  const RATES=[
-    {tk:"USD/THB", sub:{en:"baht per US dollar · little changed Friday as the stronger jobs report offset Thursday's dovish-Fed-driven baht weakness",th:"บาทต่อดอลลาร์สหรัฐ · แทบไม่เปลี่ยนแปลงวันศุกร์ ขณะรายงานการจ้างงานที่ดีเกินคาดหักล้างการอ่อนค่าของบาทจากท่าทีผ่อนคลายของเฟดวันพฤหัสฯ"}, px:"฿32.93", chg:-0.21, series:[32.74,32.81,32.93,33.00,32.93], asof:"4 Sep"},
-    {tk:"US 2Y Treasury", sub:{en:"yield · jumped back to ~4.38% Friday, briefly touching 4.4246% intraday (highest since Jan 2025) after the blowout jobs report",th:"ผลตอบแทน · ดีดกลับสู่ราว 4.38% วันศุกร์ แตะ 4.4246% ระหว่างวัน (สูงสุดตั้งแต่เดือนมกราคม 2025) หลังรายงานการจ้างงานที่ดีเกินคาด"}, px:"~4.38%", chg:0.69, series:[4.211,4.30,4.35,4.40,4.38,4.35,4.38], asof:"4 Sep"},
-    {tk:"US 10Y Treasury", sub:{en:"yield · rose to ~4.79% Friday, reversing Thursday's drop, after August payrolls smashed expectations",th:"ผลตอบแทน · ปรับขึ้นสู่ราว 4.79% วันศุกร์ พลิกกลับการปรับลงของวันพฤหัสฯ หลังตัวเลขจ้างงานเดือน ส.ค. ดีกว่าคาดอย่างมาก"}, px:"~4.79%", chg:0.63, series:[4.647,4.704,4.71,4.71,4.65,4.68,4.72,4.79,4.78,4.76,4.79], asof:"4 Sep"},
-    {tk:"US 30Y Treasury", sub:{en:"yield · backed up to ~5.28% Friday, tracking the front end higher after the jobs surprise",th:"ผลตอบแทน · ปรับขึ้นสู่ราว 5.28% วันศุกร์ ตามทิศทางฝั่งอายุสั้นที่สูงขึ้น หลังตัวเลขจ้างงานที่เหนือคาด"}, px:"~5.28%", chg:0.57, series:[5.24,5.161,5.17,5.21,5.28,5.26,5.25,5.28], asof:"4 Sep"},
-    {tk:"Gold (spot)", sub:{en:"per ounce · eased further into Tuesday as an AI-driven Asia rally and firm dollar outweighed the still-live Iran tanker war",th:"ต่อออนซ์ · อ่อนตัวลงต่อเนื่องเข้าสู่วันอังคาร ขณะกระแส AI ในเอเชียและค่าเงินดอลลาร์ที่แข็งแกร่งมีน้ำหนักมากกว่าสงครามเรือบรรทุกน้ำมันอิหร่านที่ยังดำเนินอยู่"}, px:"~$4,415", chg:-0.64, series:[4606,4454,4441,4358.74,4350,4478,4470.66,4443.53,4415], asof:"8 Sep, Asia"},
-    {tk:"Brent Crude", sub:{en:"oil, per barrel · extended its rise past Monday's Asia session, up roughly 10% since the tanker war resumed, as war-risk insurance premiums also surge",th:"น้ำมัน ต่อบาร์เรล · ปรับขึ้นต่อเนื่องผ่านตลาดเอเชียวันจันทร์ เพิ่มขึ้นราว 10% นับตั้งแต่สงครามเรือบรรทุกน้ำมันกลับมาปะทุ ขณะเบี้ยประกันความเสี่ยงสงครามก็พุ่งขึ้นเช่นกัน"}, px:"~$97.80", chg:2.22, series:[88.22,90.02,90.69,91.28,94.86,95.82,95.23,95.68,97.80], asof:"8 Sep, Asia"},
-  ];
 
 
 
@@ -448,7 +411,6 @@
     $('db-cov').innerHTML=`${t(S.dbCov)} <b>${t(S.dbCovVal)}</b>`; $('db-next').innerHTML=`${t(S.dbNext)}: <b>${t(S.dbNextVal)}</b>`;
     $('s-brief').textContent=t(S.sBrief); $('h-brief').textContent=t(S.hBrief); $('leadtag').textContent=t(S.leadtag); $('leadtxt').innerHTML=t(S.leadtxt);
     $('s-news').textContent=t(S.sNews); $('h-news').textContent=t(S.hNews); $('s-indices').textContent=t(S.sIndices); $('h-indices').textContent=t(S.hIndices); $('s-watch').textContent=t(S.sWatch); $('h-watch').textContent=t(S.hWatch); $('watchnote').innerHTML=t(S.watchnote);
-    $('s-prices').textContent=t(S.sPrices); $('h-prices').textContent=t(S.hPrices); $('pricenote').textContent=t(S.pricenote);
     $('f-src').textContent=t(S.fSrc); $('disc').innerHTML=t(S.disc); $('f-foot').textContent=t(S.foot);
 
     $('newsgrid').innerHTML =
@@ -457,8 +419,6 @@
     $('indexboard').innerHTML=`<div class="pgroup-h">${L==='th'?'ดัชนีหุ้นทั่วโลก':'Global equity indices'}</div>`+INDEXES.map(i=>`<div class="prow slim"><div class="tk"><b><span class="flag">${i.flag}</span> ${i.tk}</b><small>${t(i.rg)}</small></div><div class="px num">${i.val}</div><div>${chgPill(i.chg)}</div><div class="meta">${L==='th'?'ณ':'as of'} ${i.asof}</div></div>`).join('');
     $('watchlist').innerHTML=WATCH.map(w=>`<div class="wrow"><div class="wd"><b>${t(w.day)}</b><small>${t(w.date)}</small></div><div class="wt"><b>${t(w.t)}</b><p>${t(w.d)}</p></div><span class="imp ${w.imp}">${w.imp==='h'?(L==='th'?'สูง':'High'):w.imp==='m'?(L==='th'?'กลาง':'Medium'):(L==='th'?'ต่ำ':'Low')}</span></div>`).join('');
 
-    const pg=(title,rows)=>`<div class="pgroup-h">${title}</div>`+rows.map(r=>`<div class="prow"><div class="tk"><b>${r.tk}</b><small>${t(r.sub)}</small></div><div class="spark">${spark(r.series,r.chg)}</div><div class="px num">${r.px}</div><div class="meta">${chgPill(r.chg)}<br>${L==='th'?'ณ':'as of'} ${r.asof}</div></div>`).join('');
-    $('priceboard').innerHTML=pg(L==='th'?'เทคโนโลยี':'Technology',TECH)+pg(L==='th'?'การเงิน':'Financials',FIN)+pg(L==='th'?'สุขภาพ':'Healthcare',HEALTH)+pg(L==='th'?'พันธบัตรสหรัฐ ทองคำ น้ำมัน และค่าเงิน':'US Treasuries, gold, oil & FX',RATES);
 
 
     document.querySelectorAll('.chartbox').forEach(b=>{drawChart(b);wireChart(b);});
